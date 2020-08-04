@@ -25,15 +25,13 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-SECRET_KEY = os.getenv("SECRET_KEY") or utils.get_credentials("SECRET_KEY")
+SECRET_KEY = os.getenv("SECRET_KEY")
 
-YOUTUBE_API_KEY = os.getenv("YOUTUBE_API_KEY") or \
-    utils.get_credentials("YOUTUBE_API_KEY")
+YOUTUBE_API_KEY = os.getenv("YOUTUBE_API_KEY")
 
-DATABASE_URI = os.getenv("DATABASE_URI") or \
-    utils.get_credentials("DATABASE_URI")
+DATABASE_URI = os.getenv("DATABASE_URI")
 
 SMITE_VOD_ID = "UCuXuve8eXPmwCkrOF32JpjQ"
 

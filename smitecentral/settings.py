@@ -35,7 +35,7 @@ DATABASE_URI = os.getenv("DATABASE_URI")
 
 SMITE_VOD_ID = "UCuXuve8eXPmwCkrOF32JpjQ"
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["https://smite-central.herokuapp.com/"]
 
 # Application definition
 

@@ -1,0 +1,32 @@
+{% extends 'esports/layouts/gallery.html' %}
+{% load static %}
+
+{% block links %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'esports/styles/search.css' %}">
+    </link>
+{% endblock %}
+
+{% block topbar-content %}
+    Search Results: {{ query }}
+{% endblock %}
+
+{% block gallery_results %}
+    {% for result in  page.object_list %}
+        <a href="{% url 'match' result.id %}" class="match-card">
+            <img src="{{ result.thumbnail }}"></img>
+            <div class="card-information">
+                <h2>{{result.competition.league}}<br>Season<br>{{ result.competition.season }}</h2>
+                <h3>{{ result.title }}</h3>
+            </div>
+        </a>
+    {% empty %}
+        <h2 class="no-results">Sorry No Results Were Found</h2>
+    {% endfor %}
+{% endblock %}
+
+{% block page-form %}
+    {% url 'search' %}
+{% endblock %}
+
+

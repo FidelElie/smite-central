@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block links %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/navbar.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'esports/styles/components/video-player.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'esports/styles/match.css' %}">
+{% endblock %}
+
+{% block title %}SMITE Video{% endblock %}
+
+{% block content %}
+    <div class="video-player">
+        {% include 'esports/components/navbar-video.html' %}
+        {% if start != None %}
+            {% if not start %}
+                <div class="previous-match not-visible">
+                    <h2>Watch Earlier Round</h2>
+                    <span class="mdi mdi-chevron-left"></span>
+                </div>
+            {% endif %}
+        {% endif %}
+        {% if end != None %}
+            {% if not end %}
+                <div class="next-match not-visible">
+                    <h2>Watch Next Round</h2>
+                    <span class="mdi mdi-chevron-right"></span>
+                </div>
+            {% endif %}
+        {% endif %}
+        {% include 'esports/components/video-player.html' %}
+    </div>
+    <div class="keyboard-helper">
+        <div class="keyboard-icon">
+            <span class="mdi mdi-keyboard" id="keyboard-button"></span>
+        </div>
+        <div class="keyboard-contents">
+            <h2 class="keyboard-shortcuts">Keyboard Shortcuts</h2>
+            <div class="keybind">
+                <span class="mdi mdi-keyboard-space"></span>
+                <span>Play / Pause</span>
+            </div>
+            <div class="keybind">
+                <span class="mdi mdi-alpha-m-box"></span>
+                <span>Mute / Unmute</span>
+            </div>
+            <div class="keybind">
+                <span class="mdi mdi-alpha-f-box"></span>
+                <span>Fullscreen</span>
+            </div>
+            <div class="keybind">
+                <span class="mdi mdi-alpha-p-box"></span>
+                <span>Progress Bar (Spoiler Warning)</span>
+            </div>
+            <div class="keybind">
+                <span class="mdi mdi-arrow-left-bold-box"></span>
+                <span>Step Backwards</span>
+            </div>
+            <div class="keybind">
+                <span class="mdi mdi-arrow-right-bold-box"></span>
+                <span>Step Forwards</span>
+            </div>
+            <div class="keybind">
+                <span class="mdi mdi-alpha-a-box"></span>
+                <span class="mdi mdi-plus"></span>
+                <span class="mdi mdi-arrow-left-bold-box"></span>
+                <span>Decrease Step</span>
+            </div>
+            <div class="keybind">
+                <span class="mdi mdi-alpha-a-box"></span>
+                <span class="mdi mdi-plus"></span>
+                <span class="mdi mdi-arrow-right-bold-box"></span>
+                <span>Increase Step</span>
+            </div>
+            <div class="keybind">
+                <span class="mdi mdi-alpha-s-box"></span>
+                <span class="mdi mdi-plus"></span>
+                <span class="mdi mdi-arrow-left-bold-box"></span>
+                <span>Decrease Speed</span>
+            </div>
+            <div class="keybind">
+                <span class="mdi mdi-alpha-s-box"></span>
+                <span class="mdi mdi-plus"></span>
+                <span class="mdi mdi-arrow-right-bold-box"></span>
+                <span>Increase Speed</span>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript">
+        let chosen_video_id = "{{ id }}";
+    </script>
+    <script src="{% static 'esports/js/components/video-player.js' %}"></script>
+    <script src="{% static 'esports/js/match.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,413 @@
+/* ! Edited Navbar */
+.navbar {
+  position: absolute;
+  width: 100%;
+  height: 65px;
+  top : 0;
+  z-index: 4;
+}
+
+.navbar-container {
+  width: 80%;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-logo, .navbar-links {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo {
+  justify-content: flex-start;
+}
+
+.logo {
+  margin: auto
+}
+
+
+.block {
+  background-color: #071425;
+  height: 9%;
+  position: relative;
+  top: -9%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.block span {
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.leagues-section {
+  background-color: #071425;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 25px 0;
+}
+
+.spl-container, .swc-container {
+  display: flex;
+  width: 80%;
+  align-items: center;
+  justify-content: center;
+  margin: 25px;
+}
+
+.spl-container .league-plate {
+  background-image: url("../images/spl-logo.png");
+}
+
+.swc-container .league-plate {
+  background-image: url("../images/swc-logo.png");
+}
+
+.league-plate {
+  width: 35%;
+  background-size: cover;
+  background-color: white;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.league-plate:before {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+
+.season-options {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 35%
+}
+
+.spl-container .season-options {
+  margin-left: 50px;
+}
+
+.swc-container .season-options {
+  margin-right: 50px;
+}
+
+.season-card {
+  width: 100%;
+  background-color: white;
+  border-radius: 10px;
+  text-align: center;
+  color: black;
+  margin: 5px;
+  cursor: pointer;
+  padding: 15px;
+  border: 3px solid white;
+  box-sizing: border-box;
+}
+
+.season-card:hover {
+  color: #007BA7;
+}
+
+.hero-video-background {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-video-background {
+  top: -9%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7);
+}
+
+.content {
+  position: relative;
+  top: -9%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.video-player {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.video-container {
+  width: 100%;
+  height: 100%;
+}
+
+.video {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: 2s
+}
+
+.video.active {
+  visibility: visible;
+  opacity: 1
+}
+
+.video-overlay {
+  position: absolute;
+  background-color: rgba(0, 0, 0);
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
+  transition: 0.5s;
+}
+
+.video-interactions {
+  position: absolute;
+  bottom: 0;
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 4;
+  padding-bottom: 15px;
+}
+
+.interactions-container {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-buttons > span {
+  font-size: 24px;
+  cursor: pointer;
+  margin-right: 30px;
+  position: relative;
+}
+
+.button-tooltip {
+  position: absolute;
+  bottom: 40px;
+  font-size: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px;
+  background-color: rgba(68, 68, 68, 0.8);
+  border-radius: 5px;
+  white-space: nowrap;
+  user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+  opacity: 0;
+  transition: opacity 0.5s;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.video-indicator {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.video-titles {
+  font-family: "Bebas Neue", cursive;
+  visibility: hidden;
+  display: none;
+  opacity: 0;
+  transition: 1s;
+  font-size: 20px;
+}
+
+.video-titles.visible {
+  display: inline;
+  opacity: 1;
+  visibility: visible;
+}
+
+.about-section {
+  background-color: #14335c;
+  width: 100%;
+  padding: 50px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-contents {
+  display: grid;
+  width: 80%;
+  grid-template-columns: repeat(4, auto [col-start]);
+  gap: 25px;
+  justify-items: center;
+  justify-content: center;
+}
+
+.about-card {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 5px;
+  color: black;
+  padding: 20px;
+}
+
+.about-card h3 {
+  opacity: 0.75;
+}
+
+.about-card p {
+  margin: 0;
+}
+
+/* ! Edited Searchbar Component */
+.searchbar {
+  position: absolute;
+  left: 0;
+  top: 80px;
+  z-index: 4;
+}
+
+/* ! Media Queries */
+
+@media only screen and (max-width: 600px) {
+  .navbar-container {
+    width: 90%;
+  }
+
+  .hero-video-background {
+    margin-top: 0%;
+  }
+
+  .video-interactions {
+    flex-direction: column-reverse
+  }
+
+  .video-indicator {
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 5px;
+  }
+
+  .video-buttons > span {
+    margin: 0 15px;
+  }
+
+  .spl-container, .swc-container {
+    margin: 0;
+  }
+
+  .spl-container {
+    flex-direction: column;
+  }
+
+  .swc-container {
+    flex-direction: column-reverse;
+  }
+
+  .spl-container .season-options, .swc-container .season-options {
+    margin: 25px 0
+  }
+
+  .league-plate {
+    width: 100%;
+    margin: 0;
+  }
+
+  .season-card {
+    width: 100%;
+  }
+
+  .about-section {
+    padding: 50px 0;
+  }
+
+  .about-contents {
+    grid-template-columns: repeat(1, auto [col-start]);
+  }
+
+  .league-header {
+    padding-top: 25px;
+  }
+
+  .season-options {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 1024px) {
+  .about-contents {
+     grid-template-columns: repeat(2, auto [col-start]);
+  }
+
+  .league-plate {
+    width: 50%;
+  }
+}
+
+@media (orientation: landscape) and (max-width: 1024px) {
+  .interactions-container {
+    width: 90%;
+  }
+
+  .video-buttons > span {
+    margin-right: 20px;
+  }
+
+  .spl-container, .swc-container {
+    width: 90%;
+  }
+
+  .season-options {
+    width: 35%;
+  }
+
+  .indicator-markers {
+    display: none;
+  }
+
+  .about-section {
+    padding: 50px 0;
+  }
+
+  .about-contents {
+    width: 90%;
+    grid-template-columns: repeat(2, auto [col-start]);
+  }
+
+  .league-section {
+    padding: 50px 0 ;
+  }
+}

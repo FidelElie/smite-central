@@ -1,0 +1,93 @@
+.footer-section {
+  width: 100%;
+  padding: 50px 0;
+  background-color: #444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-contents {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-main {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-info, .footer-links {
+  width: 50%;
+  text-align: center;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.footer-links h3 {
+  font-size: 25px;
+  margin: 5px 0;
+}
+
+.footer-links a {
+  font-size: 20px;
+  margin: 2.5px;
+}
+
+.social-links {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-links a {
+  font-size: 30px;
+  margin: 10px;
+}
+
+.central-tag {
+  font-family: "Bebas Neue", cursive;
+  font-size: 30px;
+  margin: 0 10px;
+  font-weight: bold;
+}
+
+.copyright-tag {
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+.copyright-tag p {
+  font-family: "Bebas Neue", cursive;
+}
+
+@media only screen and (max-width: 600px) {
+  .footer-contents {
+    width: 90%
+  }
+
+  .footer-main {
+    flex-direction: column;
+  }
+
+  .footer-info, .footer-links {
+    width: 100%;
+  }
+
+}
+
+@media (orientation: landscape) and (max-width: 1024px) {
+}

@@ -1,0 +1,34 @@
+.match-card {
+  border-radius: 0px 0px 10px 15px;
+}
+
+.card-information {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-information h2 {
+  font-size: 1.3em;
+  padding: 10px;
+  margin: 0;
+  border-radius: 0px 0px 0px 10px;
+  background-color: #444;
+}
+
+.card-information h3 {
+  flex-grow: 1;
+  color: #444;
+  margin: 0;
+  padding: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+  .topbar-container {
+    flex-direction: column-reverse;
+    align-items: flex-start
+  }
+}
+
+

@@ -1,0 +1,15 @@
+{% extends "construction.html" %}
+{% load static %}
+
+{% block links %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'toxic/styles/toxic.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/navbar.css' %}">
+{% endblock %}
+
+{% block title %}SMITE Toxicity - Under Construction{% endblock %}
+
+{% block content %}
+    {% include "toxic/components/navbar.html" %}
+    {{ block.super }}
+{% endblock %}

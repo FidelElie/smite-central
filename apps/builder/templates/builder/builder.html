@@ -1,0 +1,15 @@
+{% extends "construction.html" %}
+{% load static %}
+
+{% block links %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'builder/styles/builder.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/navbar.css' %}">
+{% endblock %}
+
+{% block title %}SMITE Builder - Under Construction{% endblock %}
+
+{% block content %}
+    {% include "builder/components/navbar.html" %}
+    {{ block.super }}
+{% endblock %}

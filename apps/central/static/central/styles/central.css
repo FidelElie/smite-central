@@ -1,0 +1,285 @@
+.landing-page {
+  width: 100%;
+  height: 100%;
+  background-color: #071425;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden
+}
+
+.central-options {
+  height: 90%;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: 1s;
+  z-index: 0;
+}
+
+.option-card {
+  position: relative;
+  height: 600px;
+  width: 400px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.7);
+  cursor: pointer;
+  transition: box-shadow 0.25s;
+  z-index: 1;
+}
+
+.option-image {
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0, 0.5);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.option-text {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background-color: #0b2a53;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.option-title p {
+  font-size: 22px;
+  font-weight: 600;
+  font-family: 'Bebas Neue', Sans-Serif;
+}
+
+.option-description {
+  max-height: 0;
+  overflow: hidden;
+  transition: 0.5s;
+  padding: 0px 25px;
+}
+
+.option-description p {
+  font-family: 'Lato', Sans-Serif;
+  margin-bottom: 25px;
+}
+
+.central-options #toxicity .option-image{
+  background-image: url("../../../../static/images/toxic-current-yemoja.jpg");
+}
+
+.central-options #esports .option-image {
+  background-image: url("../../../../static/images/smite-esports.jpg");
+}
+
+.central-options #builder .option-image{
+  background-image: url("../../../../static/images/chef-vulcan-vulcan.jpg");
+}
+
+#left-nav, #right-nav {
+  position: absolute;
+  display: none;
+  top: 50%;
+  z-index: 2;
+  opacity: 0;
+  transition: 1s;
+  font-size: 24px;
+}
+
+/* ! Footer Element */
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 3
+}
+
+.swipe-footer {
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.swipe-contents {
+  background-color: #444;
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+  transition: 1s;
+}
+
+.footer-section {
+  width: 100%;
+  padding: 50px 0;
+  background-color: #444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-contents {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-main {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.footer-info, .footer-links {
+  width: 50%;
+  text-align: center;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.footer-links h3 {
+  font-size: 25px;
+  margin: 5px 0;
+}
+
+.footer-links a {
+  font-size: 20px;
+  margin: 2.5px;
+}
+
+.social-links {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-links a {
+  font-size: 30px;
+  margin: 10px;
+}
+
+.central-tag {
+  font-family: "Bebas Neue", cursive;
+  font-size: 30px;
+  margin: 0 10px;
+  font-weight: bold;
+}
+
+.copyright-tag {
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 20px;
+  margin-bottom: 25px;
+}
+
+.copyright-tag p {
+  font-family: "Bebas Neue", cursive;
+}
+
+/* ! Loader Element */
+
+.option-loader {
+  border: 15px solid rgba(0,0,0, 0.5);
+  border-top: 15px solid rgba(255, 255, 255, 70%);
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  animation: spin 2s linear infinite;
+  opacity: 0;
+  animation-play-state: paused;
+  transition: 1s;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@media (hover: hover) {
+  .account-button:hover path {
+    fill : lightskyblue;
+  }
+
+  .option-card:hover {
+    border: 1px solid white;
+  }
+
+  .swipe-footer:hover path {
+    fill: lightskyblue;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .central-options {
+    width: unset;
+  }
+
+  .option-card {
+    width: 70vw;
+    height: 85%;
+  }
+
+  .swipe-footer {
+    margin-bottom: 10px;
+  }
+
+  .option-loader {
+    position: absolute;
+    top: 25%;
+  }
+
+  #left-nav, #right-nav {
+    display: block;
+    opacity: 1;
+  }
+
+  #left-nav {
+    left: 5%;
+  }
+
+  #right-nav {
+    right: 5%;
+  }
+
+  .footer-main {
+    flex-direction: column;
+  }
+
+  .footer-info, .footer-links {
+    width: 100%;
+  }
+
+  .mdi.mdi-flip-v {
+    color: black;
+  }
+}
+
+@media (orientation: landscape) and (max-width: 1024px) {
+  .option-card {
+    height: 75%;
+  }
+
+  .swipe-footer {
+    margin-bottom: 10px;
+  }
+}

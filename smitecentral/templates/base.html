@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato&display=swap" rel="stylesheet">
+    <link href="https://cdn.materialdesignicons.com/5.2.45/css/materialdesignicons.min.css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/base.css' %}">
+    {% block links %}{% endblock %}
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <div class="loading-contents">
+        <div class="loader"></div>
+    </div>
+    <div class="page-contents">
+        {% block content %}{% endblock %}
+    </div>
+    <script src="{% static 'js/utilities.js' %}"></script>
+    {% block scripts %}{% endblock %}
+    <script type="text/javascript" src="{% static 'js/base.js' %}"></script>
+</body>
+</html>

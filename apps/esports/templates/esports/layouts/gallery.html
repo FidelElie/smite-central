@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'esports/styles/components/searchbar.css' %}">
+    <link rel="stylesheet" href="{% static 'esports/styles/layouts/gallery.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="gallery-topbar">
+        <div class="topbar-container">
+            <div class="topbar-title">
+                <h1>{% block topbar-content %}{% endblock %}</h1>
+            </div>
+            <div class="topbar-extras">
+                <span class="mdi mdi-magnify" id="search-button"></span>
+                <span class="mdi mdi-home-variant" id="home-button"></span>
+            </div>
+        </div>
+    </div>
+    {% include 'esports/components/searchbar.html' %}
+    <span class="mdi mdi-chevron-up top-button not-visible"></span>
+    <div class="match-gallery">
+        <div class="matches-container container">
+            <div class="matches">
+                {% block gallery_results %}{% endblock %}
+            </div>
+            <div class="match-pages">
+                {% if page.has_previous %}
+                <span class="mdi mdi-chevron-left" id="prev-match-page"></span>
+                {% else %}
+                <span class="mdi mdi-chevron-left not-visible" id="prev-match-page"></span>
+                {% endif %}
+                <div class="top-indicator">
+                    <span class="page-indicator">{{ page.number }} of {{ page.paginator.num_pages }}</span>
+                    <form action="{% block page-form %}{% endblock %}" method="post" class="page-numb-form collapsed">
+                        {% csrf_token %}
+                        <select id="page-number" name="page-number" value="{{ page.number }}">
+                            {% for page_number in page.paginator.page_range %}
+                            <option>{{ page_number }}</option>
+                            {% endfor %}
+                        </select>
+                    </form>
+                </div>
+                {% if page.has_next %}
+                <span class="mdi mdi-chevron-right" id="next-match-page"></span>
+                {% else %}
+                <span class="mdi mdi-chevron-right not-visible" id="next-match-page"></span>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{% static 'esports/js/components/searchbar.js' %}"></script>
+    <script type="text/javascript" src="{% static 'esports/js/layouts/gallery.js' %}"></script>
+{% endblock %}

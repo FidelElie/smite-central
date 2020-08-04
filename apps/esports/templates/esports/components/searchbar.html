@@ -1,0 +1,9 @@
+<div class="searchbar">
+    <div class="searchbox">
+        <form action="{% url 'search' %}" method="post">
+            {% csrf_token %}
+            <input type="text" id="desired-search" name="desired-search" placeholder="Search... ">
+            <button type="submit"><span class="mdi mdi-magnify"></span></button>
+        </form>
+    </div>
+</div>

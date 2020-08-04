@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+{% block links %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/construction.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/components/footer.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="construction">
+        <div class="construction-container">
+            <div class="construction-message">
+                <h1>Under Construction</h1>
+                <p>This Area Of Central Will Be With You Shortly, Follow Our Socials To See When They Are Released:</p>
+            </div>
+            <div class="construction-links">
+                <span class="mdi mdi-facebook"></span>
+                <span class="mdi mdi-twitter"></span>
+                <span class="mdi mdi-linkedin"></span>
+            </div>
+            <div class="construction-navigation">
+                <button id="back-button">Back To Central</button>
+            </div>
+        </div>
+    </div>
+    {% include 'components/footer.html' %}
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript">
+        document.getElementById("back-button").addEventListener("click", function() {
+            window.location = "/"
+        })
+    </script>
+{% endblock %}
+

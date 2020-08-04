@@ -1,0 +1,46 @@
+.navbar, .navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar {
+  position: absolute;
+  width: 100%;
+  height: 60px;
+  top: 0;
+}
+
+.navbar-container {
+  width: 80%;
+}
+
+.navbar-logo h1 {
+  margin: 0;
+  font-family: "Bebas Neue", cursive;
+  color: white;
+}
+
+.navbar-links {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.navbar-links span{
+  margin: 0 20px;
+  font-size: 20px;
+}
+
+.navbar-links a {
+  margin: 0 20px;
+  font-family: "Bebas Neue", cursive;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .navbar-links a {
+    margin: 0 10px;
+  }
+}

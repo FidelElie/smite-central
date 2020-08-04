@@ -1,0 +1,10 @@
+.vscode/
+
+*.pyc
+__pycache__/
+venv/
+
+media/
+
+other/
+credentials.json

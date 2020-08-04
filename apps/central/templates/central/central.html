@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block links %}
+    <link rel="stylesheet" type="text/css" href="{% static 'central/styles/central.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/navbar.css' %}">
+{% endblock %}
+
+{% block title %}SMITE Central{% endblock %}
+{% block content %}
+    {% include "central/components/navbar.html" %}
+    <span class="mdi mdi-chevron-left" id="left-nav"></span>
+    <span class="mdi mdi-chevron-right" id="right-nav"></span>
+    <div class="landing-page">
+        <div class="central-options">
+            <div class="option-card" id="toxicity">
+                <div class="option-image">
+                    <div class="option-loader"></div>
+                </div>
+                <div class="option-text">
+                    <div class="option-title">
+                        <p>Smite Toxicity</p>
+                    </div>
+                    <div class="option-description">
+                        <p>Look At The Pantheon Of Toxicity, Are You A Saint In the Community Or A Sinner?</p>
+                    </div>
+                </div>
+            </div>
+            <div class="option-card" id="esports">
+                <div class="option-image">
+                    <div class="option-loader"></div>
+                </div>
+                <div class="option-text">
+                    <div class="option-title">
+                        <p>Smite Esports</p>
+                    </div>
+                    <div class="option-description">
+                        <p>Watch The Highest Level Of Competition Without The Spoilers.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="option-card" id="builder">
+                <div class="option-image">
+                    <div class="option-loader"></div>
+                </div>
+                <div class="option-text">
+                    <div class="option-title">
+                        <p>Smite Builder</p>
+                    </div>
+                    <div class="option-description">
+                        <p>Make Builds, Cook Up Your God Recipes For Farming Them.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <span class="mdi mdi-chevron-double-up swipe-footer"></span>
+        <div class="swipe-contents">
+            <div class="footer-contents">
+                <div class="footer-main">
+                    <div class="footer-info">
+                        <div class="social-links">
+                            <a href="https://www.facebook.com/" class="mdi mdi-facebook"></a>
+                            <a href="https://www.twitter.com/" class="mdi mdi-twitter"></a>
+                            <a href="https://www.linkedin.com/" class="mdi mdi-linkedin"></a>
+                            <a href="https://www.github.com/fidelElie/" class="mdi mdi-github"></a>
+                        </div>
+                    </div>
+                    <div class="footer-links">
+                        <h3>The Apps</h3>
+                        <a href="{% url 'esports' %}">ESPORTS</a>
+                        <a href="{% url 'builder' %}">BUILDER</a>
+                        <a href="{% url 'toxic' %}">TOXICITY</a>
+                    </div>
+                </div>
+                <div class="copyright-tag">
+                    <p>Copyright &copy; Fidel Elie 2020; All Rights Reserved</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{% static 'central/js/central.js' %}"></script>
+{% endblock %}
+
+
+

@@ -1,0 +1,21 @@
+{% extends 'esports/layouts/gallery.html' %}
+{% load static %}
+
+{% block topbar-content %}
+    {{ league }} {{ season }}
+{% endblock %}
+
+{% block gallery_results %}
+    {% for result in  page.object_list %}
+        <a href="{% url 'match' result.id %}" class="match-card">
+            <img src="{{ result.thumbnail }}"></img>
+            <p>{{ result.title }}</p>
+        </a>
+    {% empty %}
+        <h2 class="no-results">Sorry No Results Were Found</h2>
+    {% endfor %}
+{% endblock %}
+
+{% block page-form %}
+    {% url 'league' id %}
+{% endblock %}

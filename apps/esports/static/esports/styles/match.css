@@ -1,0 +1,156 @@
+/* ! General Elements */
+
+.video-player {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: absolute;
+  transition: 1s;
+  bottom: 0;
+  box-shadow: 0 4px 4px 0 rgba(0,0,0,0.2);
+}
+
+.video-player, .keyboard-contents {
+  transition: 1s;
+}
+
+
+.previous-match, .next-match {
+  position: absolute;
+  width: 5%;
+  z-index: 1;
+  text-align: center;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 10px;
+  background-color: white;
+  color: #071425;
+  cursor: pointer;
+  border: 3px solid  white;
+  transition: 0.5s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.previous-match span, .next-match span {
+  font-size: 30px;
+}
+
+.previous-match {
+  left: 0;
+  border-radius: 0px 5px 5px 0px;
+  border-left: 0;
+}
+
+.next-match {
+  right: 0;
+  border-radius: 5px 0px 0px 5px;
+  border-right: 0
+}
+
+.previous-match:hover, .next-match:hover {
+  border-color: #007BA7;
+}
+
+/* ! Keyboard Helper Element */
+.keyboard-helper, .keyboard-icon, .keyboard-contents {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.keyboard-helper {
+  flex-direction: column;
+  position: absolute;
+  bottom: 0;
+  z-index: 2;
+}
+
+.keyboard-icon {
+  margin: 10px 0;
+}
+
+.keyboard-icon span {
+  font-size: 25px;
+}
+
+.keyboard-contents {
+  width: 100%;
+  overflow: hidden;
+  background-color: #444;
+  transition: 1s;
+  flex-wrap: wrap;
+  padding: 0 10%;
+  box-sizing: border-box;
+}
+
+.keyboard-shortcuts {
+  margin: 10px;
+}
+
+.keybind {
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.keybind span {
+  color: #444;
+  cursor: default
+}
+
+.keybind .mdi:before {
+  font-size: 25px;
+  margin: 5px;
+}
+
+.mdi-plus:before {
+  font-size: 15px !important;
+  margin: 0;
+}
+
+/* ! Media Queries */
+
+@media (hover: hover) {
+
+}
+
+@media only screen and (max-width: 600px) {
+  .keyboard-helper {
+    display: none;
+  }
+
+  .previous-match, .next-match {
+    top: unset;
+    transform: none;
+    bottom: 1%;
+    padding: 0;
+    width: 45%;
+  }
+
+  .previous-match {
+    flex-direction: row-reverse;
+  }
+
+  .next-match {
+    flex-direction: row;
+  }
+
+}
+
+@media (orientation: landscape) and (max-width: 1024px) {
+  .keyboard-helper {
+    display: none;
+  }
+}

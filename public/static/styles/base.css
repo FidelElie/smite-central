@@ -1,0 +1,80 @@
+body, html {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  color: white;
+}
+
+body {
+  background-color: #071425;
+}
+
+* {
+  font-family: "Lato", sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: "Bebas Neue", cursive;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  font-family: 'Bebas Neue', cursive;
+}
+
+.mdi {
+  cursor: pointer;
+}
+
+.loading-contents, .page-contents {
+  width: 100%;
+  height: 100%;
+}
+
+.page-contents {
+  z-index: 1;
+}
+
+.loading-contents {
+  position: fixed;
+  top: 0;
+  background-color: #071425;
+  opacity: 1;
+  transition: 1s;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.loaded {
+  opacity: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.container {
+  width: 75%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

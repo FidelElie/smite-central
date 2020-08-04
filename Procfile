@@ -1,1 +1,1 @@
-web: gunicorn smite-central.wsgi
+web: gunicorn smitecentral.wsgi

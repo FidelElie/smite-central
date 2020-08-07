@@ -8,3 +8,4 @@ media/
 
 other/
 credentials.json
+*.sqlite3

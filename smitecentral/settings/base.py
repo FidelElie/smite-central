@@ -13,31 +13,12 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 import sys
 
-import dj_database_url
-
-import smitecentral.utilities as utils
-
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-
-SECRET_KEY = os.getenv("SECRET_KEY")
-
-YOUTUBE_API_KEY = os.getenv("YOUTUBE_API_KEY")
-
-DATABASE_URI = os.getenv("DATABASE_URI")
 
 SMITE_VOD_ID = "UCuXuve8eXPmwCkrOF32JpjQ"
 
-ALLOWED_HOSTS = [".herokuapp.com"]
-
-# Application definition
+ALLOWED_HOSTS = []
 
 sys.path.append(os.path.join(BASE_DIR, "apps"))
 
@@ -48,21 +29,21 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'central',
-    'esports',
-    'builder',
-    'toxic'
+    'storages'
 ]
+
+INSTALLED_APPS += [
+    path for path in os.listdir(os.path.join(BASE_DIR, "apps")) if os.path.isdir(os.path.join(BASE_DIR, f"apps/{path}"))]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'smitecentral.urls'
@@ -87,14 +68,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'smitecentral.wsgi.application'
 
-# Database
-# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
-DATABASES = {}
-
-# Password validation
-# https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -110,9 +83,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# Internationalization
-# https://docs.djangoproject.com/en/3.0/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -123,18 +93,8 @@ USE_L10N = True
 
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.0/howto/static-files/
-
 STATIC_URL = '/static/'
-
 STATICFILES_DIRS = [os.path.join(PROJECT_DIR, "static/")]
-
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles/")
 
-MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
-
-MEDIA_URL = "/media/"
-
-DATABASES['default'] = dj_database_url.config(default=DATABASE_URI,
-    conn_max_age=600, ssl_require=True)
+MEDIA_ROOT = os.path.join(BASE_DIR, "mediafiles/")

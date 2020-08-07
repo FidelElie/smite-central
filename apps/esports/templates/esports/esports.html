@@ -16,7 +16,7 @@
     <div class="hero-video-background">
         <div class="video-container">
             {% for highlight in highlights %}
-                <video class="video" src="../{{ highlight.highlight_video.url }}" preload="none" data-id="{{ highlight.match.id }}"></video>
+                <video class="video" src="{{ highlight.highlight_video.url }}" preload="none" data-id="{{ highlight.match.id }}"></video>
             {% endfor %}
         </div>
         <div class="video-overlay"></div>

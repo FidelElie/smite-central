@@ -19,7 +19,7 @@ AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
 ALLOWED_HOSTS += ['.herokuapp.com']
 
 ADMINS = [
-    ("Fidel Elie", "fidel.elie@australa.co")
+    ("Fidel Elie", "Fidel.Elie2@gmail.com"),
 ]
 
 DATABASES['default'] = dj_database_url.config(

@@ -17,6 +17,14 @@ class Command(BaseCommand):
         Competition.CompetitionLeagues.SMITE_WORLD_CHAMPIONSHIP: {
             "include": ["smite world championship -"],
             "exclude": ["week"]
+        },
+        Competition.CompetitionLeagues.SMITE_CHALLENGER_CIRCUIT: {
+            "include": ["smite challenger circuit: "],
+            "exclude": ["week"]
+        },
+        Competition.CompetitionLeagues.SMITE_OPEN_CIRCUIT: {
+            "include": ["smite open circuit:"],
+            "exclude": ["week"]
         }
     }
 

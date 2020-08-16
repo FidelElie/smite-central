@@ -1,3 +1,4 @@
+""" Production Settings For Web Server """
 import os
 
 import dj_database_url

@@ -1,3 +1,4 @@
+""" Development Settings Environment """
 import os
 
 from .base import *

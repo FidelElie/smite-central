@@ -1,23 +1,34 @@
-from datetime import datetime
+import os
+
 from django.db import models
-from django.utils import timezone
 from django.core.validators import MinValueValidator
 
 # Create your models here.
 
-class Competition(models.Model):
-    SMITE_WORLD_CHAMPIONSHIP = "SWC"
-    SMITE_PRO_LEAGUE = "SPL"
+class CompMixin(object):
+    def season_number(self):
+        if hasattr(self, "competition"):
+            return self.competition.season
+        else:
+            return self.season
 
-    SMITE_LEAGUES = [
-        (SMITE_WORLD_CHAMPIONSHIP, "Smite World Championship"),
-        (SMITE_PRO_LEAGUE, "Smite Pro League")
-    ]
+    def competition_league(self):
+        if hasattr(self, "competition"):
+            return self.competition.league
+        else:
+            return self.league
+
+class Competition(models.Model, CompMixin):
+    class CompetitionLeagues(models.TextChoices):
+        SMITE_PRO_LEAGUE = "SPL", "Smite Pro League"
+        SMITE_WORLD_CHAMPIONSHIP = "SWC", "Smite World Championship"
+        SMITE_CHALLENGER_CIRCUIT = "SCC", "Smite Challenger Circuit"
+        SMITE_OPEN_CIRCUIT = "SOC", "Smite Open Circuit"
 
     league = models.CharField(
         max_length=3,
-        choices=SMITE_LEAGUES,
-        default=SMITE_PRO_LEAGUE
+        choices=CompetitionLeagues.choices,
+        default=CompetitionLeagues.SMITE_PRO_LEAGUE
     )
     season = models.PositiveIntegerField(
         default=1, validators=[MinValueValidator(1)])
@@ -26,20 +37,7 @@ class Competition(models.Model):
     def __str__(self):
         return f"{self.league} Season {self.season}"
 
-class CompetitionMixin(object):
-    def smite_league(self):
-        if hasattr(self, "match"):
-            return self.match.competition.league
-        elif hasattr(self, "competition"):
-            return self.competition.league
-
-    def season_number(self):
-        if hasattr(self, "match"):
-            return self.match.competition.season
-        elif hasattr(self, "competition"):
-            return self.competition.season
-
-class Match(models.Model, CompetitionMixin):
+class Match(models.Model, CompMixin):
     title = models.CharField(max_length=200)
     competition = models.ForeignKey(
         Competition,
@@ -55,36 +53,31 @@ class Match(models.Model, CompetitionMixin):
     def multiple_parts(self):
         return True if "," in self.ids else False
 
-class Highlight(models.Model, CompetitionMixin):
-    team_1 = models.CharField(max_length=30)
-    team_2 = models.CharField(max_length=30)
-    highlight_video_link = models.CharField(max_length=50)
-    highlight_video = models.FileField(upload_to="videos/")
+    def get_date_published(self):
+        return self.date_published
+
+class Image(models.Model):
+    title = models.CharField(max_length=30)
+    image = models.ImageField(upload_to="esports/images")
     disabled = models.BooleanField(default=False)
-    match = models.ForeignKey(
-        Match,
-        on_delete=models.CASCADE,
-        null=True
-    )
+
+    _original_image = None
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._original_image = self.image
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        if self._original_image is not None:
+            self._original_image.delete(save=False)
+
+    def delete(self, *args, **kwargs):
+        self.image.delete(save=False)
+        super().delete(*args, **kwargs)
 
     def is_disabled(self):
         return self.disabled
 
-    def save(self, *args, **kwargs):
-        highlight_video_id = self.highlight_video_link.split("v=")[-1]
-        corresponding_match = Match.objects.get(ids__contains=highlight_video_id)
-        self.match = corresponding_match
-        super().save(*args, **kwargs)
-
-    def delete(self, *args, **kwargs):
-        self.highlight_video.delete(save=False)
-        super().delete(*args, **kwargs)
-
-
-    def title(self):
-        return self.__str__()
-
     def __str__(self):
-        return f"{self.team_1} Vs {self.team_2}"
-
-
+        return self.title

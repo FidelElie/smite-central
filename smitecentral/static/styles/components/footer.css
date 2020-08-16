@@ -8,7 +8,7 @@
 }
 
 .footer-contents {
-  width: 80%;
+  width: 70%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,60 +18,113 @@
 .footer-main {
   width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
-.footer-info, .footer-links {
+.footer-info, .footer-apps {
   width: 50%;
-  text-align: center;
+}
+
+.footer-info p {
+  font-family: "Bebas Neue", cursive;
+  margin: 10px 0;
+}
+
+.footer-apps {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+
+.footer-apps p {
+  font-size: calc(1.2rem + 1vw);
+  font-family: "Bebas Neue", cursive;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.footer-links a {
+  margin: 10px;
+  transition: 0.5s;
 }
 
 .footer-links {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-}
-
-.footer-links h3 {
-  font-size: 25px;
-  margin: 5px 0;
-}
-
-.footer-links a {
-  font-size: 20px;
-  margin: 2.5px;
+  justify-content: flex-end;
 }
 
 .social-links {
   display: flex;
-  flex-direction: row;
   align-items: center;
-  justify-content: center;
 }
 
 .social-links a {
-  font-size: 30px;
   margin: 10px;
+  font-size: calc(1rem + 1vw);
+  margin-left: 0;
+  transition: 0.5s;
 }
 
 .central-tag {
   font-family: "Bebas Neue", cursive;
-  font-size: 30px;
+  font-size: calc(1.2rem + 1vw);
   margin: 0 10px;
   font-weight: bold;
+  transition: 0.5s;
+}
+
+.social-links a:hover, .central-tag:hover, .footer-links a:hover {
+  color: #007bff
+}
+
+.footer-divider {
+  margin: 25px 0;
+  width: 100%;
+  background-color: #fff;
+  height: 0.5px;
+}
+
+.footer-bottom {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
 }
 
 .copyright-tag {
-  width: 100%;
-  text-align: center;
-  margin-top: 20px;
-  font-size: 20px;
+  font-family: "Bebas Neue", cursive;
+  color: rgba(255, 255, 255, 50%)
 }
 
-.copyright-tag p {
-  font-family: "Bebas Neue", cursive;
+.site-links {
+  display: flex;
+  justify-content: flex-end;
+  flex-grow: 1;
+}
+
+.site-links a {
+  margin: 10px;
+  color: rgba(255, 255, 255, 50%);
+  transition: 0.5s;
+}
+
+.site-links a:hover {
+  color: #fff;
+}
+
+#home-button:hover {
+  color: #007bff;
+}
+
+@media (hover: hover) {
+  #down-scroll:hover {
+    color: #007bff;
+  }
+
+  .navbar-links #esports-search:hover {
+    color: #007bff;
+  }
 }
 
 @media only screen and (max-width: 600px) {
@@ -83,11 +136,41 @@
     flex-direction: column;
   }
 
-  .footer-info, .footer-links {
+  .footer-apps, .footer-info {
     width: 100%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .social-links, .footer-links {
+    justify-content: center;
+  }
+
+  .footer-bottom {
+    flex-direction: column-reverse;
   }
 
 }
 
 @media (orientation: landscape) and (max-width: 1024px) {
+  .footer-contents {
+    width: 80%;
+  }
+
+  .footer-info, .footer-apps {
+    width: unset
+  }
+
+  .footer-info {
+    flex-grow: 1;
+  }
+
+  .footer-links {
+    flex-direction: column;
+  }
+
+  .footer-links a {
+    margin: 0;
+  }
 }

@@ -8,18 +8,25 @@
                     <a href="https://www.twitter.com/" class="mdi mdi-twitter"></a>
                     <a href="https://www.linkedin.com/" class="mdi mdi-linkedin"></a>
                     <a href="https://www.github.com/fidelElie/" class="mdi mdi-github"></a>
+                    <a href="mailto:fidel.elie@australa.co" class="mdi mdi-email"></a>
                 </div>
             </div>
-            <div class="footer-links">
-                <h3>The SC Apps</h3>
-                <a href="{% url 'esports' %}">ESPORTS</a>
-                <a href="{% url 'builder' %}">BUILDER</a>
-                <a href="{% url 'toxic' %}">TOXICITY</a>
+            <div class="footer-apps">
+                <p>The Apps</p>
+                <div class="footer-links">
+                    <a href="{% url 'esports' %}">Esports</a>
+                    <a href="{% url 'builder' %}">Builder</a>
+                    <a href="{% url 'toxic' %}">Toxicity</a>
+                </div>
             </div>
         </div>
-        <div class="copyright-tag">
-            <p>Copyright &copy; Fidel Elie 2020; All Rights Reserved</p>
+        <hr class="footer-divider">
+        <div class="footer-bottom">
+            <p class="copyright-tag">Copyright &copy; Fidel Pierre Elie 2020</p>
+            <div class="site-links">
+                <a href="{% url 'admin:login' %}">Admin Login</a>
+                <a href="{% url 'privacy' %}">Privacy Policy</a>
+            </div>
         </div>
     </div>
-</div>
 </div>

@@ -13,34 +13,19 @@
 {% block content %}
     {% include "esports/components/navbar-esports.html" %}
     {% include "esports/components/searchbar.html" %}
-    <div class="hero-video-background">
-        <div class="video-container">
-            {% for highlight in highlights %}
-                <video class="video" src="{{ highlight.highlight_video.url }}" preload="none" data-id="{{ highlight.match.id }}"></video>
+    <div class="hero-background">
+        <div class="esports-images">
+            {% for image in images %}
+                <img class="slideshow-image" alt="{{ image.title }}" src="{{ image.image.url }}">
             {% endfor %}
         </div>
-        <div class="video-overlay"></div>
-        <div class="video-interactions">
-            <div class="video-buttons">
-                <span class="mdi mdi-volume-mute">
-                    <span class="button-tooltip">Unmute Sound</span>
-                </span>
-                <span class="mdi mdi-chevron-left" id="video-left">
-                    <span class="button-tooltip">Previous Highlight</span>
-                </span>
-                <span class="mdi mdi-chevron-right" id="video-right">
-                    <span class="button-tooltip">Next Highlight</span>
-                </span>
-                <span class="mdi mdi-pause" id="video-pause">
-                    <span class="button-tooltip">Pause Highlight</span>
-                </span>
-                <span class="mdi mdi-video-outline" id="video-go">
-                    <span class="button-tooltip">See Match</span>
-                </span>
-            </div>
-            <div class="video-indicator">
-                {% for highlight in highlights %}
-                    <span class="video-titles">{{ highlight.title }}</span>
+        <div class="slideshow-overlay"></div>
+        <div class="slide-timer"></div>
+        <div class="latest-container">
+            <h3 class="season-banner">Latest Games</h3>
+            <div class="latest-leagues">
+                {% for league in latest %}
+                    <a href="{% url 'league' league.id 1 %}">{{ league.league }}</a>
                 {% endfor %}
             </div>
         </div>
@@ -48,52 +33,52 @@
     <div class="block">
         <span class="mdi mdi-chevron-down" id="down-scroll"></span>
     </div>
-    <div class="content">
-        <div class="about-section">
-            <h2>The Smite Esports Experience</h2>
-            <div class="about-contents">
-                <div class="about-card">
-                    <h3>Spoilers Kept To A Minimum</h3>
-                    <p>The Video Progress bars are hidden by default. Never see the length of the games, unless you want to.</p>
-                </div>
-                <div class="about-card">
-                    <h3>All Games In One Place</h3>
-                    <p>All games are sorted by their league with an easy search function to find the games you want.</p>
-                </div>
-                <div class="about-card">
-                    <h3>Clean Game Parts</h3>
-                    <p>Muli-part games are shown cleanly as one. You have the option to navigate through them when your are ready.</p>
-                </div>
-                <div class="about-card">
-                    <h3>Custom YouTube Player</h3>
-                    <p>Find all the controls that you are accustomed to. Slow down your favorite plays, Jump through the video with ease.</p>
-                </div>
+    <div class="error-overflow"></div>
+    <div class="youtube-subscribe">
+        <h2>Don't Forget To <a href="https://www.youtube.com/channel/{{ channel_id }}?sub_confirmation=1" class="subscribe-button">Subscribe</a> to SMITE VOD.</h2>
+    </div>
+    <div class="about-section">
+        <h2>The Smite Esports Experience</h2>
+        <div class="about-contents">
+            <div class="about-card">
+                <h3>Spoilers At A Minimum</h3>
+                <p>Video Progress bars are hidden by default. Never see the length of the games, unless you want to.</p>
+            </div>
+            <div class="about-card">
+                <h3>All Games, One Place</h3>
+                <p>Games are sorted by their league with a search function to find the games you want.</p>
+            </div>
+            <div class="about-card">
+                <h3>Clean Game Parts</h3>
+                <p>Muli-part games are shown cleanly as one. You have the option to navigate through them when your are ready.</p>
+            </div>
+            <div class="about-card">
+                <h3>Custom YouTube Player</h3>
+                <p>Find all the controls that you are accustomed to. Slow down your favorite plays, jump through the video with ease.</p>
             </div>
         </div>
-        <div class="leagues-section">
-            <h2>The Leagues</h2>
-            <div class="spl-container">
-                <div class="league-plate"></div>
-                <div class="season-options">
-                    {% for year in spl_years %}
-                        <a class="season-card" href="{% url 'league' year.id 1 %}">
-                            Season {{ year.season }}
-                        </a>
-                    {% endfor %}
+    </div>
+    <div class="leagues-section">
+        <h2>The Leagues</h2>
+        <div class="leagues">
+            {% for league in league_info %}
+                <div class="league-container">
+                    <div class="league-plate">
+                        <img src="{% static league.url %}">
+                    </div>
+                    <h3 class="season-banner">{{ league.tagline }}</h3>
+                    <div class="season-options">
+                        {% for year in league.seasons %}
+                            <a href="{% url 'league' year.id 1 %}" class="season-card">
+                                Season {{ year.season }}
+                            </a>
+                        {% endfor %}
+                    </div>
                 </div>
-            </div>
-            <div class="swc-container">
-                <div class="season-options">
-                    {% for year in swc_years %}
-                        <a class="season-card" href="{% url 'league' year.id 1 %}">
-                            Season {{ year.season }}
-                        </a>
-                    {% endfor %}
-                </div>
-                <div class="league-plate"></div>
-            </div>
+            {% endfor %}
         </div>
-        {% include 'components/footer.html' %}
+    </div>
+    {% include 'components/footer.html' %}
 {% endblock %}
 
 {% block scripts %}

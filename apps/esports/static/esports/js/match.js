@@ -8,8 +8,6 @@ keyboard_contents = document.getElementsByClassName("keyboard-contents")[0];
 previous_match = document.getElementsByClassName("previous-match")[0];
 next_match = document.getElementsByClassName("next-match")[0];
 
-match_nav_toggle = document.getElementById("player-display-match-nav");
-
 mobile_query = window.matchMedia("(max-width: 600px)");
 hover_query = window.matchMedia("(hover: hover)");
 
@@ -128,8 +126,8 @@ if (next_match != undefined) {
   next_match.addEventListener("click", function() {changeMatchPart(true);})
 }
 
-if (match_nav_toggle != undefined) {
-  match_nav_toggle.addEventListener("click", function() {
+if (video_match_toggle != undefined) {
+  video_match_toggle.addEventListener("click", function() {
     if (previous_match != undefined) {
       if (previous_match.classList.contains("not-visible")) {
         previous_match.classList.remove("not-visible");
@@ -185,7 +183,6 @@ keyboard_contents.style.maxHeight = "0px";
 
 // ! Extended Video Player Functions
 
-// TODO  make show transition better
 function changeSliderValue(slider_data, direction) {
   if (direction) {
     slider_data.element.stepUp();

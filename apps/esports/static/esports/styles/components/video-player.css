@@ -1,5 +1,4 @@
 /* ! Main Player Elements */
-
 .player-contents {
   width: 80%;
   height: 80%;
@@ -34,9 +33,7 @@
   box-shadow: 0 4px 4px 0 rgba(0,0,0,0.2);
 }
 
-.player-progress.shown {
-  height: 10px;
-}
+.player-progress.shown {height: 10px;}
 
 .progress-indicator, .progress-bar {
   position: absolute;
@@ -59,6 +56,7 @@
 
 /* ! Player Controls Elements */
 .player-controls {
+  position: relative;
   width: 100%;
   height: 50px;
   background-color: #0b2a53;
@@ -68,6 +66,22 @@
   box-sizing: border-box;
   padding: 15px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.7);
+}
+
+.player-tooltips {
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.player-tooltips span {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .left-aligned-controls, .right-aligned-controls {
@@ -80,18 +94,14 @@
   flex-grow: 1;
 }
 
-.right-aligned-controls {
-  justify-content: flex-end;
-}
+.right-aligned-controls {justify-content: flex-end;}
 
-.control-group {
-  display: flex;
-}
+.control-group {display: flex;}
 
 .control-group > span {
-  font-size: 20px;
   margin: 0 10px;
   position: relative;
+  transition: 1s;
 }
 
 .control-range {
@@ -104,21 +114,20 @@
 .control-range input {
   display: block;
   margin: 0 10px;
-  transition: 1s;
+  transition: 0.5s;
   opacity: 1;
   width: 50px;
 }
 
 /* ! Tooltip Elements */
 
-.control-range output, span .tooltip, .progress-tooltip, .prompt-tooltip {
+.tooltip, .progress-tooltip {
   background-color: #444;
   border-radius: 5px;
   color: #fff;
   position: absolute;
   padding: 10px;
   left: 50%;
-  font-size: 15px;
   transform: translateX(-50%);
   white-space: nowrap;
   user-select: none;
@@ -129,30 +138,19 @@
   pointer-events: none;
   opacity: 0;
   visibility: hidden;
-}
-
-.control-range output, .prompt-tooltip {
-  transition: opacity 0.5s, visibility 0.5s;
-  white-space: nowrap;
-  bottom: 30px;
-}
-
-span .tooltip {
-  transition: 0.5s;
-  bottom: 40px;
+  transition: 0.5s
 }
 
 .progress-tooltip {
-  /* padding: 1; */
   bottom: 20px;
   transition: 0.5s;
 }
 
 /* ! General Manipulation */
 
-.hidden {
-  display: none !important;
-}
+.hidden {display: none !important;}
+
+.collapsed {display: none;}
 
 .not-visible {
   visibility: hidden !important;
@@ -166,43 +164,25 @@ span .tooltip {
 
 
 /* ! Media Queries */
-
 @media (hover: hover) {
-  .mdi:hover .tooltip {
-    opacity: 1;
-    visibility: visible;
-  }
+  .control-group span:hover {color: #007bff}
 }
 
 @media only screen and (max-width: 600px) {
-  .player-contents {
-    width: 95%;
-  }
+  .player-contents {width: 95%;}
 
-  .player-controls {
-    flex-direction: column;
-  }
+  .player-controls {flex-direction: column;}
 
-  #player {
-    height: 55%;
-  }
+  #player {height: 55%;}
 
-  .player-controls {
-    height: unset;
-  }
+  .player-controls {height: unset;}
 
   .left-aligned-controls, .right-aligned-controls {
     flex-direction: row;
     margin: 5px 0;
   }
 
-  .control-group {
-    justify-content: center;
-  }
-
-  .control-range output, span .tooltip, .progress-tooltip {
-    font-size: 12px;
-  }
+  .control-group {justify-content: center;}
 }
 
 @media (orientation: landscape) and (max-width: 1024px) {
@@ -211,13 +191,9 @@ span .tooltip {
     height: 70%;
   }
 
-  .control-group > span {
-    margin: 0 10px;
-  }
+  .control-group > span {margin: 0 10px;}
 
-  .control-range input {
-    width: 35px;
-  }
+  .control-range input {width: 35px;}
 
   .fullscreen {
     width: 100%;

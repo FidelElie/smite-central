@@ -66,5 +66,4 @@ function extractStyleValue(element, style_rule) {
   let number_regex = new RegExp("-?[0-9]+");
   let number = parseInt(number_regex.exec(element.style[style_rule])[0], 10);
   return number
-
 }

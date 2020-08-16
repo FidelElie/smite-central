@@ -1,19 +1,19 @@
 from django.contrib import admin
 
-from .models import Highlight, Competition, Match
+from .models import Competition, Match, Image
 
-class HighlightAdmin(admin.ModelAdmin):
+class CompetitionAdmin(admin.ModelAdmin):
+    list_display = ["__str__", "competition_league", "season_number"]
+
+class MatchAdmin(admin.ModelAdmin):
+    list_display = [
+        "__str__", "competition_league", "season_number", "multiple_parts", "get_date_published"]
+
+class ImageAdmin(admin.ModelAdmin):
+    list_display = [
+        "__str__", "is_disabled"]
+
     actions = ["remove_selected", "toggle_disable"]
-
-    list_display = ["__str__", "smite_league", "season_number", "is_disabled"]
-
-    fieldsets = [
-        ("Highlight Teams", {"fields": ["team_1", "team_2"]}),
-        ("Video Information", {"fields": ["highlight_video_link", "highlight_video"]}),
-        ("Advanced", {"fields": ["disabled", "match"]})
-    ]
-
-    readonly_fields = ["match"]
 
     def get_actions(self, request):
         actions = super().get_actions(request)
@@ -30,12 +30,6 @@ class HighlightAdmin(admin.ModelAdmin):
             obj.disabled = not obj.disabled
             obj.save()
 
-
-class MatchAdmin(admin.ModelAdmin):
-    list_display = [
-        "__str__", "smite_league", "season_number", "multiple_parts"]
-
-admin.site.register(Highlight, HighlightAdmin)
-admin.site.register(Competition)
+admin.site.register(Competition, CompetitionAdmin)
 admin.site.register(Match, MatchAdmin)
-
+admin.site.register(Image, ImageAdmin)

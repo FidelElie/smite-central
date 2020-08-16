@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'styles/errors.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/components/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/components/navbar.css' %}">
+{% endblock %}
+
+{% block content %}
+    {% include 'central/components/navbar.html' %}
+    <div class="backdrop">
+        <div class=error-contents>
+            <h2 class="error-header">Ooops...</h2>
+            <h3 class="error-message">{{ status_code }}: {{ message }}</h3>
+            <hr>
+            <div class="error-links">
+                <a href="{% url 'central' %}">Menu</a>
+                <a href="{% url 'esports' %}">Esports</a>
+                <a href="{% url 'builder' %}">Builder</a>
+                <a href="{% url 'toxic' %}">Toxicity</a>
+            </div>
+        </div>
+    </div>
+    {% include 'components/footer.html' %}
+{% endblock %}

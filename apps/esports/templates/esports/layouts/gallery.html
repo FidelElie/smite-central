@@ -4,6 +4,7 @@
 {% block links %}
     <link rel="stylesheet" href="{% static 'esports/styles/components/searchbar.css' %}">
     <link rel="stylesheet" href="{% static 'esports/styles/layouts/gallery.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/components/footer.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -50,6 +51,7 @@
             </div>
         </div>
     </div>
+    {% include 'components/footer.html' %}
 {% endblock %}
 
 {% block scripts %}

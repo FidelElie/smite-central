@@ -2,8 +2,10 @@
 {% load static %}
 
 {% block links %}
+    <meta http-equiv="ScreenOrientation" content="autoRotate:disabled">
     <link rel="stylesheet" type="text/css" href="{% static 'central/styles/central.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'styles/components/navbar.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/components/footer.css' %}">
 {% endblock %}
 
 {% block title %}SMITE Central{% endblock %}
@@ -13,14 +15,12 @@
     <span class="mdi mdi-chevron-right" id="right-nav"></span>
     <div class="landing-page">
         <div class="central-options">
-            <div class="option-card" id="toxicity">
+        <div class="option-card" id="toxicity">
                 <div class="option-image">
-                    <div class="option-loader"></div>
+                    <img src="{% static 'images/toxic-current-yemoja.jpg' %}">
                 </div>
                 <div class="option-text">
-                    <div class="option-title">
-                        <p>Smite Toxicity</p>
-                    </div>
+                    <h2 class="option-title">Smite Toxicity</h2>
                     <div class="option-description">
                         <p>Look At The Pantheon Of Toxicity, Are You A Saint In the Community Or A Sinner?</p>
                     </div>
@@ -28,12 +28,10 @@
             </div>
             <div class="option-card" id="esports">
                 <div class="option-image">
-                    <div class="option-loader"></div>
+                    <img src="{% static 'images/jaguar-footballer-xbalanque.jpg' %}">
                 </div>
                 <div class="option-text">
-                    <div class="option-title">
-                        <p>Smite Esports</p>
-                    </div>
+                    <h2 class="option-title">Smite Esports</h2>
                     <div class="option-description">
                         <p>Watch The Highest Level Of Competition Without The Spoilers.</p>
                     </div>
@@ -41,12 +39,10 @@
             </div>
             <div class="option-card" id="builder">
                 <div class="option-image">
-                    <div class="option-loader"></div>
+                    <img src="{% static 'images/chef-vulcan-vulcan.jpg' %}">
                 </div>
                 <div class="option-text">
-                    <div class="option-title">
-                        <p>Smite Builder</p>
-                    </div>
+                    <h2 class="option-title">Smite Builder</h2>
                     <div class="option-description">
                         <p>Make Builds, Cook Up Your God Recipes For Farming Them.</p>
                     </div>
@@ -67,15 +63,22 @@
                             <a href="https://www.github.com/fidelElie/" class="mdi mdi-github"></a>
                         </div>
                     </div>
-                    <div class="footer-links">
-                        <h3>The Apps</h3>
-                        <a href="{% url 'esports' %}">ESPORTS</a>
-                        <a href="{% url 'builder' %}">BUILDER</a>
-                        <a href="{% url 'toxic' %}">TOXICITY</a>
+                    <div class="footer-apps">
+                        <p>The Apps</p>
+                        <div class="footer-links">
+                            <a href="{% url 'esports' %}">Esports</a>
+                            <a href="{% url 'builder' %}">Builder</a>
+                            <a href="{% url 'toxic' %}">Toxicity</a>
+                        </div>
                     </div>
                 </div>
-                <div class="copyright-tag">
-                    <p>Copyright &copy; Fidel Elie 2020; All Rights Reserved</p>
+                <hr class="footer-divider">
+                <div class="footer-bottom">
+                    <p class="copyright-tag">Copyright &copy; Fidel Pierre Elie - 2020</p>
+                    <div class="site-links">
+                        <a href="{% url 'admin:login' %}">Admin Login</a>
+                        <a href="{% url 'privacy' %}">Privacy Policy</a>
+                    </div>
                 </div>
             </div>
         </div>

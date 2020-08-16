@@ -3,7 +3,7 @@ from django.conf import settings
 from django.views import View
 from django.core.paginator import Paginator
 
-from .models import Highlight, Competition, Match
+from .models import Competition, Match, Image
 from .youtubeAPI import YoutubeAPI
 # Create your views here.
 
@@ -11,19 +11,39 @@ class EsportsView(View):
     template_name = "esports/esports.html"
 
     def get(self, request):
-        highlights = Highlight.objects.all().filter(disabled=False)
+        images = Image.objects.all().filter(disabled=False)
 
-        spl_seasons = Competition.objects.all().filter(
-            league=Competition.SMITE_PRO_LEAGUE)
+        league_queries =  [
+            Competition.objects.all().filter(league=league).order_by("-season") for league in Competition.CompetitionLeagues.values
+        ]
 
-        swc_seasons = Competition.objects.all().filter(
-            league=Competition.SMITE_WORLD_CHAMPIONSHIP
-        )
+        latest_leagues = [q[0] for q in league_queries]
+
+        league_information = []
+        tag_lines = [
+            "Top Level Competition",
+            "The World Stage",
+            "The Fierce Up And Comers",
+            "Open To Opportunity"
+        ]
+
+        for i, query in enumerate(league_queries):
+            corresponding_comp_code = Competition.CompetitionLeagues.values[i]
+            logo_url = "esports/images/{}-logo.png".format(
+                corresponding_comp_code.lower())
+            league_information.append(
+                {
+                    "seasons": query,
+                    "url": logo_url,
+                    "tagline": tag_lines[i]
+                }
+                )
 
         context = {
-            "highlights": highlights,
-            "spl_years": spl_seasons,
-            "swc_years": swc_seasons
+            "images": images,
+            "latest": latest_leagues,
+            "league_info": league_information,
+            "channel_id": settings.SMITE_VOD_ID
         }
 
         return render(request, self.template_name, context)
@@ -74,6 +94,7 @@ class MatchView(View):
 
         context = {
             "id": video_id,
+            "title": corresponding_match.title,
             "match-id": match_id,
             "parts": video_numb,
             "start": start,

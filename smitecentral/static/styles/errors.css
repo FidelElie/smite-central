@@ -1,0 +1,54 @@
+.backdrop {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error-contents hr {
+  width: 100%;
+  background-color: #fff;
+  height: 1px;
+  opacity: 0.8;
+}
+
+.error-header {
+  font-size: 8rem;
+  margin: 10px 0;
+}
+
+.error-message {
+  font-size: 2.5rem;
+  opacity: 0.8;
+  margin: 10px 0;
+}
+
+.error-links {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+}
+
+.error-links a {
+  margin: 5px 0;
+  font-size: 1.5rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .error-contents {
+    width: 80%;
+  }
+
+  .error-header {
+    font-size: 6rem;
+  }
+
+  .error-message {
+    font-size: 1.5rem;
+  }
+
+  .error-links a {
+    font-size: 1rem;
+  }
+}

@@ -64,11 +64,7 @@ hover_functions = {
   nomatch: () => { return }
 }
 
-navigation_information = [
-  "/toxic",
-  "/esports",
-  "/builder"
-]
+navigation_information = ["/toxic", "/esports", "/builder"]
 
 
 // ! Touch Functions
@@ -122,9 +118,6 @@ parseMedia(hover_query, hover_functions);
 
 // ! Navigation Functions
 function navigateOptions(element) {
-  let loader_indicator = element.querySelector(".option-image .option-loader");
-  loader_indicator.style.animationPlayState = "running";
-  loader_indicator.style.opacity = "1";
   let index = Array.from(option_cards).indexOf(element);
   window.location = navigation_information[index]
 }

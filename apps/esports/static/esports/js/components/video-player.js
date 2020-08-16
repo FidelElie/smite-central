@@ -12,6 +12,8 @@ video_backwards = document.getElementById("player-back");
 video_forwards = document.getElementById("player-forward");
 video_start = document.getElementById("player-to-start");
 
+video_match_toggle = document.getElementById("player-match-nav");
+
 video_progress_button = document.getElementById("player-progress-show");
 
 video_skip_button = document.getElementById("player-skip");
@@ -22,9 +24,15 @@ video_speed_slider = document.getElementById("player-speed-input");
 
 video_fullscreen = document.getElementById("player-fullscreen");
 
+video_buttons = [video_play, video_mute, video_backwards, video_forwards, video_start, video_match_toggle, video_progress_button, video_skip_button, video_speed_button, video_fullscreen];
+
 video_back = document.getElementsByClassName("back-button")[0];
 
 ranges = document.querySelectorAll(".control-range");
+
+unmuted_volume_value = 100;
+
+hover_query = window.matchMedia("(hover: hover)");
 
 states = {
   unstarted: -1,
@@ -56,7 +64,23 @@ slider_data = [
   }
 ];
 
-unmuted_volume_value = 100;
+hover_functions = {
+  match: () => {
+    video_buttons.forEach(button => {
+      let button_tooltip = document.getElementById(
+        button.getAttribute("id").replace("player-", ""));
+      button.addEventListener("mouseenter", function(){
+        button_tooltip.classList.add("visible");
+      })
+      button.addEventListener("mouseleave", function(){
+        button_tooltip.classList.remove("visible");
+      })
+    })
+  },
+  nomatch: () => {}
+}
+
+
 
 // ! Video Player Setup
 tag = document.createElement('script');
@@ -98,9 +122,15 @@ function onPlayerStateChange() {
     addIcon(video_play, "mdi-pause");
     changeTooltip(video_play, "Pause");
     video_timings = setInterval(setVideoTime, 1000 * player.getPlaybackRate());
+    if (video_play.classList.contains("collapsed")) {
+      video_play.classList.remove("collapsed");
+    }
   }
   player_contents.focus();
 }
+
+// ! Setup
+parseMedia(hover_query, hover_functions);
 
 // ! Event Handlers
 video_play.addEventListener("click", togglePlayback);
@@ -108,6 +138,7 @@ video_mute.addEventListener("click", toggleMute);
 video_backwards.addEventListener("click", () => { movePlayback(false); });
 video_forwards.addEventListener("click", () => { movePlayback(true); });
 video_start.addEventListener("click", () => { player.seekTo(0, true) });
+
 video_progress_button.addEventListener("click", toggleProgressBar)
 video_skip_button.addEventListener("click", () => {
   toggleContents(video_skip_slider, video_speed_slider);
@@ -119,7 +150,7 @@ video_fullscreen.addEventListener("click", toggleFullscreen);
 
 ranges.forEach(range => {
   let input = range.querySelector(".sliders");
-  let output = range.querySelector(".value-indicator");
+  let output = document.getElementById(input.getAttribute("id").replace("player-", ""))
   let input_data = slider_data.filter(x => x.element === input)[0];
   let values = input_data.text != null ? input_data.text : null;
   input.addEventListener("input", () => {
@@ -143,9 +174,11 @@ video_progress_container.addEventListener("click", function (event) {
   setVideoTime(new_time);
 })
 
+hover_query.addListener(function () {parseMedia(this, hover_functions)});
+
 // ! Video Element Functions
 function getProgress(event_local) {
-  let local = event_local - $(video_progress_container).offset().left;
+  let local = event_local - video_progress_container.offsetLeft
   let percentage_width = getPercentageWidth(local);
   if (percentage_width < 0) { percentage_width = 0; }
   if (percentage_width > 1) { percentage_width = 1; }
@@ -267,19 +300,16 @@ function getPercentageTime(specified_time) {
 }
 
 function getPercentageWidth(specified_width) {
-  return specified_width / $(player_contents).width();
+  return specified_width / player_contents.offsetWidth;
 }
 
 function setTooltip(range, bubble, values = null) {
   let val = values != null ? values[range.value] : range.value;
-  let min = range.min ? range.min : 0;
-  let max = range.max ? range.max : 100;
-  let newVal = Number(((range.value - min) * 100) / (max - min));
   bubble.innerHTML = val;
-  bubble.style.left = `calc(${newVal}% + (${8 - newVal * 0.15}px))`;
 }
 
 function changeTooltip(element, text) {
-  tooltip = element.children[0];
+  let corresponding_tooltip_id = element.getAttribute("id").replace("player-", "");
+  let tooltip = document.getElementById(corresponding_tooltip_id);
   tooltip.innerText = text
 }

@@ -1,21 +1,3 @@
-body, html {
-  margin: 0;
-  width: 100%;
-  height: 100%;
-}
-
-body {
-  background-color: #071425;
-}
-
-h1 {
-  font-family: "Bebas Neue", cursive;
-}
-
-p {
-  font-family: "Lato", sans-serif;
-}
-
 .construction {
   width: 100%;
   height: 100%;
@@ -42,26 +24,41 @@ p {
   justify-content: center;
 }
 
-.construction-message {
+.construction-message {flex-direction: column;}
+
+.construction-message h2, .construction-message p {margin: 1rem 0;}
+
+.construction-message h2 {color: rgba(0, 0, 0, 95%);}
+
+.construction-message p {
   flex-direction: column;
   text-align: center;
-  color: black;
+  color: rgba(0, 0, 0, 80%);
+}
+
+.construction-links {margin: 1rem 0;}
+
+.construction-links a {
+  margin: 0 10px;
+  color: rgba(0, 0, 0, 80%);
+  font-size: calc(1rem + 0.5vw);
 }
 
 button {
   appearance: none;
   padding: 15px 15px;
-  font-family: "Lato", sans-serif;
   border: 2px #071425 solid;
+  background-color: transparent;
   border-radius: 5px;
-  font-family: "Bebas Neue", cursive;
   color: black;
+  cursor: pointer;
 }
 
-.mdi {
-  font-size: 20px;
-  margin: 20px;
+button:hover {
+  color: #007bff;
 }
+
+
 
 @media only screen and (max-width: 600px) {
   .construction-container {

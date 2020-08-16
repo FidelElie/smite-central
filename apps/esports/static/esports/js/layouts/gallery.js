@@ -5,6 +5,8 @@ search_toggle = document.getElementById("search-button");
 to_top_button = document.getElementsByClassName("top-button")[0];
 
 match_gallery = document.getElementsByClassName("match-gallery")[0];
+matches = document.getElementsByClassName("matches");
+
 
 prev_page_button = document.getElementById("prev-match-page");
 next_page_button = document.getElementById("next-match-page");
@@ -13,6 +15,8 @@ top_indicator = document.getElementsByClassName("top-indicator")[0];
 page_indicator = document.getElementsByClassName("page-indicator")[0];
 page_form = document.getElementsByClassName("page-numb-form")[0];
 page_input = document.getElementById("page-number");
+
+footer = document.getElementsByClassName("footer-section")[0]
 
 // ! Setup
 
@@ -23,10 +27,19 @@ page_input.value = page_input.getAttribute("value");
 setToggle(search_toggle);
 
 window.addEventListener("scroll", function() {
-  if (window.pageYOffset > 0) {
+  let current_location = parseInt(window.pageYOffset, 10);
+  if (current_location > 0) {
     to_top_button.classList.remove("not-visible");
   } else {
     to_top_button.classList.add("not-visible");
+  }
+
+  let document_bottom = Math.ceil(document.body.scrollHeight - window.innerHeight) - (100 + footer.getBoundingClientRect().height);
+
+  if(document_bottom <= current_location) {
+    top_indicator.classList.add("show-indicator")
+  } else {
+    top_indicator.classList.remove("show-indicator")
   }
 })
 

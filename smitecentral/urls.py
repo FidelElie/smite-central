@@ -20,11 +20,16 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path("", include("central.urls")),
-    path("esports/", include("esports.urls")),
-    path("builder/", include("builder.urls")),
-    path("toxic/", include("toxic.urls")),
-    path('admin/', admin.site.urls)
+    path('esports/', include("esports.urls")),
+    path('builder/', include("builder.urls")),
+    path('toxic/', include("toxic.urls")),
+    path('admin/', admin.site.urls, name="admin"),
 ]
+
+handler404 = 'smitecentral.views.handle_404'
+handler500 = 'smitecentral.views.handle_500'
+handler403 = 'smitecentral.views.handle_403'
+handler400 = 'smitecentral.views.handle_400'
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,

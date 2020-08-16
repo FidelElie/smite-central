@@ -72,6 +72,7 @@
   justify-content: center;
   height: 5%;
   margin: 5% 0;
+  margin-bottom: 10%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -97,8 +98,11 @@
   text-align: center;
   padding: 10px;
   color: black;
-  font-size: 15px;
   font-family: "Bebas Neue", sans-serif;
+}
+
+.match-card:hover p {
+  color: #007bff;
 }
 
 .match-pages .mdi {font-size: 25px;}
@@ -137,7 +141,7 @@
   justify-content: center;
   height: 100%;
   margin: 0 25px;
-  padding: 10px;
+  padding: 15px;
   background-color: white;
   color: #071425;
   border-radius: 10px;
@@ -145,6 +149,10 @@
   border: 2px solid;
   border-color: #fff;
   cursor: pointer;
+}
+
+.top-indicator.show-indicator {
+  border-color: #007BA7;
 }
 
 .not-visible {
@@ -157,7 +165,10 @@
 /* ! Media Queries */
 
 @media (hover: hover) {
-  .top-indicator:hover {border-color: rgb(36, 119, 226);}
+  .top-indicator:hover {border-color: #007bff;}
+  #search-button:hover {
+    color: #007bff;
+  }
 }
 
 @media only screen and (max-width: 600px) {

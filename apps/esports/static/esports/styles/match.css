@@ -1,5 +1,4 @@
 /* ! General Elements */
-
 .video-player {
   width: 100%;
   height: 100%;
@@ -14,10 +13,7 @@
   box-shadow: 0 4px 4px 0 rgba(0,0,0,0.2);
 }
 
-.video-player, .keyboard-contents {
-  transition: 1s;
-}
-
+.video-player, .keyboard-contents {transition: 1s;}
 
 .previous-match, .next-match {
   position: absolute;
@@ -38,9 +34,7 @@
   justify-content: center;
 }
 
-.previous-match span, .next-match span {
-  font-size: 30px;
-}
+.previous-match span, .next-match span {font-size: 30px;}
 
 .previous-match {
   left: 0;
@@ -54,9 +48,11 @@
   border-right: 0
 }
 
-.previous-match:hover, .next-match:hover {
-  border-color: #007BA7;
-}
+.previous-match:hover, .next-match:hover {border-color: #007BA7;}
+
+.mdi {font-size: calc(1rem + 0.5vw);}
+
+.back-button:hover, #home-button:hover {color: #007bff;}
 
 /* ! Keyboard Helper Element */
 .keyboard-helper, .keyboard-icon, .keyboard-contents {
@@ -73,13 +69,9 @@
   z-index: 2;
 }
 
-.keyboard-icon {
-  margin: 10px 0;
-}
+.keyboard-icon {margin: 10px 0;}
 
-.keyboard-icon span {
-  font-size: 25px;
-}
+.keyboard-icon span {font-size: 25px;}
 
 .keyboard-contents {
   width: 100%;
@@ -91,9 +83,7 @@
   box-sizing: border-box;
 }
 
-.keyboard-shortcuts {
-  margin: 10px;
-}
+.keyboard-shortcuts {margin: 10px;}
 
 .keybind {
   margin: 10px;
@@ -122,14 +112,8 @@
 
 /* ! Media Queries */
 
-@media (hover: hover) {
-
-}
-
 @media only screen and (max-width: 600px) {
-  .keyboard-helper {
-    display: none;
-  }
+  .keyboard-helper {display: none;}
 
   .previous-match, .next-match {
     top: unset;
@@ -139,18 +123,11 @@
     width: 45%;
   }
 
-  .previous-match {
-    flex-direction: row-reverse;
-  }
+  .previous-match {flex-direction: row-reverse;}
 
-  .next-match {
-    flex-direction: row;
-  }
-
+  .next-match {flex-direction: row;}
 }
 
 @media (orientation: landscape) and (max-width: 1024px) {
-  .keyboard-helper {
-    display: none;
-  }
+  .keyboard-helper {display: none;}
 }

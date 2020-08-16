@@ -1,0 +1,41 @@
+.privacy-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.privacy-message {
+  width: 60%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.privacy-message p {
+  color: rgba(255, 255, 255, 85%)
+}
+
+.central-button {
+  appearance: none;
+  padding: 15px 15px;
+  border: 2px #fff solid;
+  background-color: transparent;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.central-button:hover {
+  color: #007bff;
+}
+
+@media only screen and (max-width:600px) {
+  .privacy-message {
+    height: 90%;
+    width: 80%;
+  }
+}

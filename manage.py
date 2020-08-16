@@ -3,8 +3,10 @@
 import os
 import sys
 
+from smitecentral.utilities import get_credentials
+
 def main():
-    settings_module = os.getenv("DJANGO_SETTINGS_MODULE") or "smitecentral.settings.development"
+    settings_module = os.getenv("DJANGO_SETTINGS_MODULE") or get_credentials("DJANGO_SETTINGS_MODULE")
 
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', settings_module)
     try:

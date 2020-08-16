@@ -85,5 +85,6 @@ class Command(BaseCommand):
                 playlist_id=data["playlist_id"])
 
             if not existing_comp.exists():
-                self.stdout.write(f"Adding {data["title"]} To Database")
+                self.stdout.write(
+                    "Adding {} To Database".format(data["title"]))
                 Competition(**data).save()

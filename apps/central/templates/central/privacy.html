@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'central/styles/privacy.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/components/footer.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="privacy-container">
+        <div class="privacy-message">
+            <h1>Your Data Is Yours</h1>
+            <p>We take none of your data for any reason. Enjoy the website and all its functionality. The only data that can be collected from you is from YouTube if you're logged in while watching the games. This will count to the activities on your account.</p>
+            <p>As more functionality is added to the site, we will be transparent in what data we keep and use to make the best site possible. Thank you.</p>
+            <a class="central-button" href="{% url 'central' %}">Back To Central</a>
+        </div>
+    </div>
+    {% include 'components/footer.html' %}
+{% endblock %}

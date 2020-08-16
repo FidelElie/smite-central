@@ -42,7 +42,6 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         flush = kwargs["flush"]
-        self.create_translation_entities()
 
         self.string_helper.add_regexp(
             "game-parts", "(\(?Game\s*\d+(\s*of\s*\d+\)?|\)|.*\))?)")

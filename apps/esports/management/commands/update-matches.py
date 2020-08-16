@@ -225,12 +225,10 @@ class Command(BaseCommand):
 
                 reg_matches = [reg.search(video_title) for reg in comps_regs]
 
-                def check_for_match(regexes):
-                    for i, reg in enumerate(regexes):
-                        if reg is not None:
-                            return i
+                league_index = self.check_for_match(reg_matches)
+                if league_index == None:
+                    continue
 
-                league_index = check_for_match(reg_matches)
                 league = most_recent_comps[league_index].league
                 league_filter = self.filters[league]
 
@@ -286,7 +284,6 @@ class Command(BaseCommand):
                                 "date_published": aware_date
                             }
                         )
-
 
             if "nextPageToken" in video_batch:
                 page_token = video_batch["nextPageToken"]
@@ -356,6 +353,15 @@ class Command(BaseCommand):
 
         stripped_title = title.replace(largest_match, "").strip()
         return stripped_title, game_number
+
+    @staticmethod
+    def check_for_match(regexes):
+        for i, reg in enumerate(regexes):
+            if reg is not None:
+                return i
+        else:
+            return None
+
 
     @staticmethod
     def transpose_ids(ids):

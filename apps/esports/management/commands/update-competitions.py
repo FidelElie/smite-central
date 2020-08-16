@@ -86,5 +86,5 @@ class Command(BaseCommand):
 
             if not existing_comp.exists():
                 self.stdout.write(
-                    "Adding {} To Database".format(data["title"]))
+                    "Adding {} {} To Database".format(data["league"], data["season"]))
                 Competition(**data).save()

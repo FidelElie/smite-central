@@ -2,6 +2,9 @@ import re
 
 class StringHelper(object):
     regexps = {}
+    webcodes = [
+        "&amp;"
+    ]
 
     def add_regexp(self, regexp_name, regular_expression, check_cases = False):
         """ Add Regular Expression To Be Precompiled And Stored.
@@ -94,6 +97,34 @@ class StringHelper(object):
         found_match = False if False in match_flags else True
 
         return found_match
+
+    @staticmethod
+    def compound_filter(filters):
+        """ Flatten include and exclude filters
+
+        Parameters
+        ----------
+        filters: dict
+            The dictionary of filters to flatten.
+
+        Returns
+        -------
+        flattened_filters: dict
+            The flattened filters with one include and exclude flag
+        """
+        include_lists = [filters[_filter]["include"] for _filter in filters]
+        exclude_lists = [filters[_filter]["exclude"] for _filter in filters]
+        flatten_list = lambda x: [item for sublist in x for item in sublist]
+
+        includes = flatten_list(include_lists)
+        excludes = flatten_list(exclude_lists)
+
+        flattened_filters = {
+            "include": includes,
+            "exclude": excludes
+        }
+
+        return flattened_filters
 
     @staticmethod
     def remove_extra_spaces(string):

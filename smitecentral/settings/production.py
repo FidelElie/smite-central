@@ -18,13 +18,18 @@ AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
 
 ALLOWED_HOSTS += ['.herokuapp.com']
 
-DATABASES = {}
+ADMINS = [
+    ("Fidel Elie", "fidel.elie@australa.co")
+]
 
 DATABASES['default'] = dj_database_url.config(
     default=os.getenv('DATABASE_URL'),
     conn_max_age=600,
     ssl_require=True
 )
+
+STATIC_URL = "https://{AWS_S3_CUSTOM_DOMAIN}/static/"
+STATICFILES_STORAGE = "smitecentral.storage.StaticStorage"
 
 MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
 DEFAULT_FILE_STORAGE = 'smitecentral.storage.MediaStorage'

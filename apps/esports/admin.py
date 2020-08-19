@@ -1,17 +1,32 @@
 from django.contrib import admin
+from django.db import models
+from django_better_admin_arrayfield.admin.mixins import DynamicArrayMixin
+from .models import League, Competition, Match, Image
 
-from .models import Competition, Match, Image
-
-class CompetitionAdmin(admin.ModelAdmin):
-    list_display = ["__str__", "competition_league", "season_number"]
+class LeagueAdmin(admin.ModelAdmin, DynamicArrayMixin):
+    list_display = ["title", "code", "tagline"]
+    readonly_fields = ["code"]
+    fieldsets = (
+        ("Information",
+        {"fields": (
+            "title", "code", "tagline", "description")}),
+        ("Competition",
+        {"fields": (
+            "competition_include_filters", "competition_exclude_filters")}),
+        ("Match",
+        {"fields": (
+            "match_include_filters", "match_exclude_filters"
+        )})
+    )
 
 class MatchAdmin(admin.ModelAdmin):
-    list_display = [
-        "__str__", "competition_league", "season_number", "multiple_parts", "get_date_published"]
+    list_display = ["title", "league_title", "season_number", "multiple_parts", "date_published"]
+    readonly_fields = ["ids"]
+    list_filter = ["competition", "date_published"]
+    search_fields = ["title"]
 
 class ImageAdmin(admin.ModelAdmin):
-    list_display = [
-        "__str__", "is_disabled"]
+    list_display = ["title", "disabled"]
 
     actions = ["remove_selected", "toggle_disable"]
 
@@ -30,6 +45,7 @@ class ImageAdmin(admin.ModelAdmin):
             obj.disabled = not obj.disabled
             obj.save()
 
-admin.site.register(Competition, CompetitionAdmin)
+admin.site.register(League, LeagueAdmin)
+admin.site.register(Competition)
 admin.site.register(Match, MatchAdmin)
 admin.site.register(Image, ImageAdmin)

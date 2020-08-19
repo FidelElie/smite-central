@@ -1,10 +1,62 @@
 {% extends 'esports/layouts/gallery.html' %}
 {% load static %}
 
-{% block title %}SMITE Esports - {{ league }} Season {{ season }}{% endblock %}
+{% block title %}SMITE Esports - {{ league.code }} {% endblock %}
 
-{% block topbar-content %}
-    {{ league }} {{ season }}
+{% block links %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'esports/styles/league.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="gallery-topbar">
+        <div class="topbar-container">
+            <div class="topbar-title">
+                <h1>{{ league.code }}</h1>
+            </div>
+            <div class="topbar-extras">
+                <span class="mdi mdi-magnify" id="search-button"></span>
+                <span class="mdi mdi-home-variant" id="home-button"></span>
+            </div>
+        </div>
+    </div>
+    {% include 'esports/components/searchbar.html' %}
+    <div class="league-section">
+        <div class="container league-container">
+            <div class="league-plate">
+                <img src="{% static logo %}">
+            </div>
+            <div class="league-info">
+                <h2>{{ league.tagline }}</h2>
+                <p>{{ league.description }}</p>
+                <div class="league-seasons">
+                    {% for comp in competitions %}
+                        {% if current_comp == comp %}
+                            <a href="{% url 'league' league.id comp.id %}" class="season-option current-season">Season {{ comp.season }}</a>
+                        {% else %}
+                            <a href="{% url 'league' league.id comp.id %}" class="season-option">Season {{ comp.season }}</a>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr class="league-divider">
+    <div class="latest-container">
+        <div class="latest-banner">
+            <h2>Latest Season Videos</h2>
+            {% if page.has_next %}
+                <a href="{% url 'season' current_comp.id 1 %}">See All +</a>
+            {% endif %}
+        </div>
+    </div>
+    {{ block.super }}
+    {% if page.has_next %}
+        <div class="more-content">
+            <a href="{% url 'season' current_comp.id 1 %}">See Videos</a>
+        </div>
+    {% endif %}
+    {% include 'components/footer.html' %}
 {% endblock %}
 
 {% block gallery_results %}
@@ -16,8 +68,4 @@
     {% empty %}
         <h2 class="no-results">Sorry No Results Were Found</h2>
     {% endfor %}
-{% endblock %}
-
-{% block page-form %}
-    {% url 'league' id %}
 {% endblock %}

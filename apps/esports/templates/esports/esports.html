@@ -21,14 +21,6 @@
         </div>
         <div class="slideshow-overlay"></div>
         <div class="slide-timer"></div>
-        <div class="latest-container">
-            <h3 class="season-banner">Latest Games</h3>
-            <div class="latest-leagues">
-                {% for league in latest %}
-                    <a href="{% url 'league' league.id 1 %}">{{ league.league }}</a>
-                {% endfor %}
-            </div>
-        </div>
     </div>
     <div class="block">
         <span class="mdi mdi-chevron-down" id="down-scroll"></span>
@@ -64,12 +56,14 @@
             {% for league in league_info %}
                 <div class="league-container">
                     <div class="league-plate">
-                        <img src="{% static league.url %}">
+                        <a href="{% url 'league' league.corresponding_league.id %}">
+                            <img src="{% static league.url %}">
+                        </a>
                     </div>
                     <h3 class="season-banner">{{ league.tagline }}</h3>
                     <div class="season-options">
                         {% for year in league.seasons %}
-                            <a href="{% url 'league' year.id 1 %}" class="season-card">
+                            <a href="{% url 'season' year.id 1 %}" class="season-card">
                                 Season {{ year.season }}
                             </a>
                         {% endfor %}

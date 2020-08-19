@@ -1,0 +1,145 @@
+.league-section {
+  width: 100%;
+  display: flex;
+  padding-top: 50px;
+  align-items: center;
+  justify-content: center;
+}
+
+.league-container {width: 85%;}
+
+.league-plate {
+  background-color: #fff;
+  border-radius: 10px;
+  box-sizing: border-box;
+  padding: 15px;
+}
+
+.league-plate img {
+  width: 100%;
+  height: 100%;
+}
+
+.league-plate {width: 35%;}
+
+.league-info {
+  width: 50%;
+  margin: 0 40px;
+}
+
+.league-info p {
+  opacity: 0.8;
+}
+
+.league-seasons {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.latest-banner a {
+  opacity: 0.8;
+}
+
+.season-option {
+  background-color: white;
+  border-radius: 10px;
+  text-align: center;
+  color: black;
+  margin: 10px 20px;
+  margin-left: 0;
+  cursor: pointer;
+  padding: 15px;
+  border: 3px solid white;
+  box-sizing: border-box;
+  transition: 0.5s;
+}
+
+.season-option.current-season {border-color: #007bff;}
+
+.league-divider {
+  width: 85%;
+  background-color: #fff;
+  margin: 50px auto;
+  height: 3px;
+}
+
+.latest-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.latest-banner {
+  width: 85%;
+  display: flex;
+  align-items: center;
+}
+
+.latest-banner h2 {
+  flex-grow: 1;
+  margin: 0;
+}
+
+.match-pages {display: none;}
+
+.more-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 50px 0;
+  margin-bottom: 75px;
+}
+
+.more-content a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  margin: 0 25px;
+  padding: 15px;
+  background-color: white;
+  color: #071425;
+  border-radius: 10px;
+  transition: 1s;
+  border: 2px solid;
+  border-color: #fff;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+  .league-container {flex-direction: column;}
+
+  .league-seasons {justify-content: center;}
+
+  .league-section {padding-top: 10px;}
+
+  .season-option {
+    margin: 10px 10px;
+    margin-left: unset;
+  }
+
+  .league-plate, .league-info {width: 100%;}
+
+  .league-divider {margin: 25px;}
+}
+
+@media (orientation: landscape) and (max-width: 1024px) {
+  .league-container {
+    flex-direction: column;
+    width: 90%;
+  }
+
+  .league-plate {
+    width: 85%
+  }
+
+  .league-info {
+    margin: 0;
+    width: 85%;
+  }
+
+  .league-seasons {
+    justify-content: center;
+  }
+}

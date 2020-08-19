@@ -1,17 +1,13 @@
 {% extends 'esports/layouts/gallery.html' %}
 {% load static %}
 
-{% block links %}
-    {{ block.super }}
-    <link rel="stylesheet" href="{% static 'esports/styles/search.css' %}">
-    </link>
-{% endblock %}
+{% block title %}SMITE Esports - {{ league }} Season {{ season }}{% endblock %}
 
 {% block content %}
     <div class="gallery-topbar">
         <div class="topbar-container">
             <div class="topbar-title">
-                <h1>Search Results: {{ query }}</h1>
+                <h1>{{ league }} {{ season }}</h1>
             </div>
             <div class="topbar-extras">
                 <span class="mdi mdi-magnify" id="search-button"></span>
@@ -28,10 +24,7 @@
     {% for result in  page.object_list %}
         <a href="{% url 'match' result.id %}" class="match-card">
             <img src="{{ result.thumbnail }}"></img>
-            <div class="card-information">
-                <h2>{{result.competition.league.code}}<br>Season<br>{{ result.competition.season }}</h2>
-                <h3>{{ result.title }}</h3>
-            </div>
+            <p>{{ result.title }}</p>
         </a>
     {% empty %}
         <h2 class="no-results">Sorry No Results Were Found</h2>
@@ -39,7 +32,5 @@
 {% endblock %}
 
 {% block page-form %}
-    {% url 'search' %}
+    {% url 'season' id %}
 {% endblock %}
-
-

@@ -67,20 +67,20 @@ slider_data = [
 hover_functions = {
   match: () => {
     video_buttons.forEach(button => {
-      let button_tooltip = document.getElementById(
-        button.getAttribute("id").replace("player-", ""));
-      button.addEventListener("mouseenter", function(){
-        button_tooltip.classList.add("visible");
-      })
-      button.addEventListener("mouseleave", function(){
-        button_tooltip.classList.remove("visible");
-      })
+      if (button != undefined) {
+        let button_tooltip = document.getElementById(
+          button.getAttribute("id").replace("player-", ""));
+        button.addEventListener("mouseenter", function(){
+          button_tooltip.classList.add("visible");
+        })
+        button.addEventListener("mouseleave", function(){
+          button_tooltip.classList.remove("visible");
+        })
+      }
     })
   },
   nomatch: () => {}
 }
-
-
 
 // ! Video Player Setup
 tag = document.createElement('script');

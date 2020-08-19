@@ -8,18 +8,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class="gallery-topbar">
-        <div class="topbar-container">
-            <div class="topbar-title">
-                <h1>{% block topbar-content %}{% endblock %}</h1>
-            </div>
-            <div class="topbar-extras">
-                <span class="mdi mdi-magnify" id="search-button"></span>
-                <span class="mdi mdi-home-variant" id="home-button"></span>
-            </div>
-        </div>
-    </div>
-    {% include 'esports/components/searchbar.html' %}
+
     <span class="mdi mdi-chevron-up top-button not-visible"></span>
     <div class="match-gallery">
         <div class="matches-container container">
@@ -51,7 +40,6 @@
             </div>
         </div>
     </div>
-    {% include 'components/footer.html' %}
 {% endblock %}
 
 {% block scripts %}

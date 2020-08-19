@@ -2,11 +2,11 @@
   border-radius: 0px 0px 10px 15px;
 }
 
+
 .card-information {
   width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-grow: 1;
 }
 
 .card-information h2 {
@@ -26,7 +26,14 @@
 @media only screen and (max-width: 600px) {
   .topbar-container {
     flex-direction: column-reverse;
-    align-items: flex-start
+    align-items: flex-start;
+    width: 90%;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 1024px) {
+  .topbar-container {
+    width: 90%;
   }
 }
 

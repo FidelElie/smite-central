@@ -1,7 +1,6 @@
 /* ! Edited Navbar */
 .navbar {
   position: absolute;
-  width: 100%;
   top : 0;
   z-index: 4;
   padding: 1% 0;
@@ -20,6 +19,28 @@
   height: 100%;
   display: flex;
   align-items: center;
+}
+
+.league-links {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-grow: 1;
+  margin-left: 30px;
+}
+
+.navbar-logo  h1 a, .league-links a {transition: 0.5s;}
+
+.navbar-logo h1 a:hover, .league-links a:hover {color:#007bff;}
+
+.navigation-links {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.league-links a, .navigation-links a, .navigation-links span {
+  margin: 0 20px;
 }
 
 .navbar-logo {justify-content: flex-start;}
@@ -69,7 +90,7 @@
   width: calc(0.9rem + 0.5vw);
   text-align: center;
   line-height: calc(0.9rem + 0.5vw);
-  box-shadow: 0 4px 4px 0 rgba(0,0,0,0.5);
+  box-shadow: 0 4px 4px 0 rgba(0,0,0,0.1);
 }
 
 .latest-container {
@@ -220,7 +241,11 @@
   border-radius: 10px;
   box-sizing: border-box;
   padding: 15px;
+  border: 3px solid white;
+  transition: 0.5s
 }
+
+.league-plate:hover {border-color: #007bff;}
 
 .league-plate img {
   width: 100%;
@@ -264,12 +289,32 @@
 /* ! Media Queries */
 
 @media only screen and (max-width: 600px) {
-  .navbar-container {width: 90%;}
+  .searchbar {
+    top: 11vh;
+  }
+
+  .navbar {height: 10vh;}
+
+  .navbar-container {
+    width: 90%;
+    flex-direction: column;
+  }
+
+  .navbar-logo {
+    width: 100%;
+    text-align: left;
+  }
+
+  .navbar-links {width: 100%;}
+
+  .league-links {margin-left: 0;}
+
+  .league-links a, .navigation-links a, .navigation-links span {margin: 0 10px;}
 
   .slide-timer {
     left: 50%;
     transform: translateX(-50%);
-    bottom: 25%;
+    bottom: 2.5%;
   }
 
   .latest-container {
@@ -300,7 +345,7 @@
 
   .season-options {
     width: 100%;
-    margin-bottom: 25px
+    margin-bottom: 25px;
   }
 
   .season-card {margin: 5px 5px;}
@@ -338,6 +383,12 @@
 }
 
 @media (orientation: landscape) and (max-width: 1024px) {
+  .navbar-container {width: 90%;}
+
+  .league-links a {margin: 0 10px;}
+
+  .searchbar {top: 15vh;}
+
   .about-section {padding: 50px 0;}
 
   .about-contents {

@@ -2,6 +2,7 @@
 hero_background = document.getElementsByClassName("hero-background")[0];
 slide_timer = document.getElementsByClassName("slide-timer")[0];
 
+block = document.getElementsByClassName("block")[0];
 error_overflow = document.getElementsByClassName("error-overflow")[0];
 
 scroll_to_content = document.getElementById("down-scroll");
@@ -39,7 +40,8 @@ try {
   setIndex(0);
 } catch (TypeError) {
   hero_background.style.display = "none";
-  error_overflow.style.height = "150px";
+  block.style.display = "none";
+  error_overflow.style.height = "200px";
 }
 
 setToggle(esports_search);

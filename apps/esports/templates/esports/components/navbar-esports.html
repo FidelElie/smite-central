@@ -1,7 +1,13 @@
 {% extends "components/navbar.html" %}
 
-{% block navbarLogo %}SMITE Esports{% endblock %}
+{% block navbarLogo %}<a href="{% url 'central' %}">SMITE Esports</a>{% endblock %}
 {% block navbarLinks %}
-    <span class="mdi mdi-magnify" id="esports-search"></span>
-    <a class="mdi mdi-home" id="home-button" href="{% url 'central' %}"></a>
+    <div class="league-links">
+        {% for league in leagues %}
+            <a href="{% url 'league' league.id %}">{{ league.code }}</a>
+        {% endfor %}
+    </div>
+    <div class="navigation-links">
+        <span class="mdi mdi-magnify" id="esports-search"></span>
+    </div>
 {% endblock %}

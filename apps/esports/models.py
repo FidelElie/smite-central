@@ -60,6 +60,9 @@ class Match(models.Model):
     def league_title(self):
         return self.competition.league.title
 
+    def __str__(self):
+        return self.title
+
 class Image(models.Model):
     title = models.CharField(max_length=30)
     image = models.ImageField(upload_to="esports/images/image")
@@ -79,3 +82,6 @@ class Image(models.Model):
     def delete(self, *args, **kwargs):
         self.image.delete(save=False)
         super().delete(*args, **kwargs)
+
+    def __str__(self):
+        return self.title

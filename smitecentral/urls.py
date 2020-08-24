@@ -32,6 +32,9 @@ handler403 = 'smitecentral.views.handle_403'
 handler400 = 'smitecentral.views.handle_400'
 
 if settings.DEBUG:
+    import debug_toolbar
     urlpatterns += static(settings.MEDIA_URL,
                           document_root=settings.MEDIA_ROOT)
+
+    urlpatterns += [path('__debug__/', include(debug_toolbar.urls))]
 

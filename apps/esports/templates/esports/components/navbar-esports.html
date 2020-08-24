@@ -3,8 +3,8 @@
 {% block navbarLogo %}<a href="{% url 'central' %}">SMITE Esports</a>{% endblock %}
 {% block navbarLinks %}
     <div class="league-links">
-        {% for league in leagues %}
-            <a href="{% url 'league' league.id %}">{{ league.code }}</a>
+        {% for info in esports_info %}
+            <a href="{% url 'league' info.league.id %}">{{ info.league.code }}</a>
         {% endfor %}
     </div>
     <div class="navigation-links">

@@ -12,7 +12,7 @@
     <div class="gallery-topbar">
         <div class="topbar-container">
             <div class="topbar-title">
-                <h1>{{ league.code }}</h1>
+                <a href="{% url 'esports' %}"><h1>{{ league.code }}</h1></a>
             </div>
             <div class="topbar-extras">
                 <span class="mdi mdi-magnify" id="search-button"></span>
@@ -53,7 +53,7 @@
     {{ block.super }}
     {% if page.has_next %}
         <div class="more-content">
-            <a href="{% url 'season' current_comp.id 1 %}">See Videos</a>
+            <a href="{% url 'season' current_comp.id 1 %}">See More Videos</a>
         </div>
     {% endif %}
     {% include 'components/footer.html' %}
@@ -62,7 +62,7 @@
 {% block gallery_results %}
     {% for result in  page.object_list %}
         <a href="{% url 'match' result.id %}" class="match-card">
-            <img src="{{ result.thumbnail }}"></img>
+            <img src="{{ result.thumbnail }}" loading="lazy"></img>
             <p>{{ result.title }}</p>
         </a>
     {% empty %}

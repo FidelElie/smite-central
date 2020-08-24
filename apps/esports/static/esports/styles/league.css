@@ -37,10 +37,6 @@
   flex-wrap: wrap;
 }
 
-.latest-banner a {
-  opacity: 0.8;
-}
-
 .season-option {
   background-color: white;
   border-radius: 10px;
@@ -55,7 +51,14 @@
   transition: 0.5s;
 }
 
-.season-option.current-season {border-color: #007bff;}
+.season-option.current-season {
+  border-color: #007bff;
+  color: #007bff;
+}
+
+.season-option:hover {
+  color: #007bff
+}
 
 .league-divider {
   width: 85%;
@@ -81,6 +84,13 @@
   margin: 0;
 }
 
+.latest-banner a {
+  opacity: 0.7;
+  transition: 0.5s;
+}
+
+.latest-banner a:hover {opacity: 1;}
+
 .match-pages {display: none;}
 
 .more-content {
@@ -105,6 +115,11 @@
   border: 2px solid;
   border-color: #fff;
   cursor: pointer;
+}
+
+.more-content a:hover {
+  color: #007bff;
+  border-color: #007bff;
 }
 
 @media only screen and (max-width: 600px) {

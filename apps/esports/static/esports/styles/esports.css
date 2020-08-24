@@ -142,9 +142,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: 0.5s
 }
-
-.block span {cursor: pointer;}
 
 .error-overflow {width: 100%;}
 
@@ -161,13 +160,17 @@
 .subscribe-button {
   padding: 15px;
   border-radius: 10px;
+  border: 2px solid #fff;
   background-color: #fff;
   color: #0d3972;
   margin: 0 15px;
   transition: 0.5s;
 }
 
-.subscribe-button:hover {color: #007bff}
+.subscribe-button:hover {
+  color: #007bff;
+  border-color: #007bff;
+}
 
 .about-section {
   background-color: #14335c;

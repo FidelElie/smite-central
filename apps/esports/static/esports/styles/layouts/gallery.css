@@ -18,6 +18,10 @@
 
 .topbar-title h1 {margin: 0 10px;}
 
+.topbar-title a {transition:0.5s;}
+
+.topbar-title a:hover {color: #007bff;}
+
 .topbar-extras {
   flex-grow: 4;
   display: flex;
@@ -95,11 +99,10 @@
   padding: 10px;
   color: black;
   font-family: "Bebas Neue", sans-serif;
+  transition: 0.5s;
 }
 
-.match-card:hover p {
-  color: #007bff;
-}
+.match-card:hover p {color: #007bff;}
 
 .match-pages .mdi {font-size: 25px;}
 
@@ -148,7 +151,7 @@
 }
 
 .top-indicator.show-indicator {
-  border-color: #007BA7;
+  border-color: #007bff;
 }
 
 .not-visible {

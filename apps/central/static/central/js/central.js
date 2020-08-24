@@ -84,11 +84,16 @@ down = (func, modifier) => {
   touch_end_y < touch_start_y ? func(modifier) : null;
 }
 
+// ! Setup
+
+Array.from(option_cards).forEach(card => {
+  card.style.marginLeft = "30px";
+  card.style.marginRight = "30px";
+})
+
 // ! Event Handlers
 Array.from(option_cards).forEach(card => {
   card.addEventListener("click", function() {navigateOptions(this);});
-  card.style.marginLeft = "25px";
-  card.style.marginRight = "25px";
 })
 
 footer_button.addEventListener("click", () => { manipulateFooter() })
@@ -192,7 +197,6 @@ function extractTransform(element) {
   if (current_transform != "") {
     let stripped_value = current_transform.replace("translateX(", "").replace(")", "");
     return parseInt(stripped_value.replace("px", ""), 10);
-
   } else {
     return 0
   }

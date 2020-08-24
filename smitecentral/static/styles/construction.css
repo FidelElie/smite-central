@@ -42,6 +42,7 @@
   margin: 0 10px;
   color: rgba(0, 0, 0, 80%);
   font-size: calc(1rem + 0.5vw);
+  transition: 0.5s
 }
 
 button {
@@ -54,11 +55,7 @@ button {
   cursor: pointer;
 }
 
-button:hover {
-  color: #007bff;
-}
-
-
+button:hover, .construction-links a:hover {color: #007bff;}
 
 @media only screen and (max-width: 600px) {
   .construction-container {
@@ -66,9 +63,7 @@ button:hover {
     width: 80%;
   }
 
-  .construction {
-    background-position: center;
-  }
+  .construction {background-position: center;}
 }
 
 @media (orientation: landscape) and (max-width: 1024px) {
@@ -77,7 +72,5 @@ button:hover {
     width: 70%;
   }
 
-  .construction-message h1 {
-    margin: 0;
-  }
+  .construction-message h1 {margin: 0;}
 }

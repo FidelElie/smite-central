@@ -53,16 +53,16 @@
     <div class="leagues-section">
         <h2>The Leagues</h2>
         <div class="leagues">
-            {% for league in league_info %}
+            {% for info in esports_info %}
                 <div class="league-container">
                     <div class="league-plate">
-                        <a href="{% url 'league' league.corresponding_league.id %}">
-                            <img src="{% static league.url %}">
+                        <a href="{% url 'league' info.league.id %}">
+                            <img src="{% static info.logo %}">
                         </a>
                     </div>
-                    <h3 class="season-banner">{{ league.tagline }}</h3>
+                    <h3 class="season-banner">{{ info.league.tagline }}</h3>
                     <div class="season-options">
-                        {% for year in league.seasons %}
+                        {% for year in info.seasons %}
                             <a href="{% url 'season' year.id 1 %}" class="season-card">
                                 Season {{ year.season }}
                             </a>

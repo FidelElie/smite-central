@@ -42,13 +42,9 @@
   justify-content: center;
 }
 
-.option-title {
-  font-size: calc(1rem + 0.75vw);
-}
+.option-title {font-size: calc(1rem + 0.75vw);}
 
-.option-title, .option-description p {
-  margin: 1rem 0;
-}
+.option-title, .option-description p {margin: 1rem 0;}
 
 .option-description {
   max-height: 0;
@@ -89,9 +85,7 @@
   z-index: 3
 }
 
-.swipe-footer {
-  margin-bottom: 20px;
-}
+.swipe-footer {margin-bottom: 20px;}
 
 .swipe-contents {
   background-color: #444;
@@ -103,75 +97,39 @@
   align-items: flex-start;
 }
 
-.footer-contents {
-  padding: 40px 0;
-}
+.footer-contents {padding: 40px 0;}
 
 .footer-info {
   display: flex;
   align-items: center;
 }
 
-@media (hover: hover) {
-  .account-button:hover path {
-    fill : lightskyblue;
-  }
-
-  .option-card:hover {
-    border: 1px solid white;
-  }
-
-  .swipe-footer:hover path {
-    fill: lightskyblue;
-  }
-}
+.option-card:hover {border: 1px solid white;}
 
 @media only screen and (max-width: 600px) {
-  .central-options {
-    width: unset;
-  }
+  .central-options {width: unset;}
 
-  .option-card {
-    width: 75vw;
-  }
+  .option-card {width: 75vw;}
 
-  .swipe-footer {
-    margin-bottom: 10px;
-  }
-
-  .option-loader {
-    position: absolute;
-    top: 25%;
-  }
+  .swipe-footer {margin-bottom: 10px;}
 
   #left-nav, #right-nav {
     display: block;
     opacity: 1;
   }
 
-  #left-nav {
-    left: 5%;
-  }
+  #left-nav {left: 5%}
 
-  #right-nav {
-    right: 5%;
-  }
+  #right-nav {right: 5%;}
 
-  .footer-main {
-    flex-direction: column;
-  }
+  .footer-main {flex-direction: column;}
 
-  .footer-info, .footer-links {
-    width: 100%;
-  }
+  .footer-info, .footer-links {width: 100%;}
+
 }
 
 @media (orientation: landscape) and (max-width: 1024px) {
-  .swipe-footer {
-    margin-bottom: 10px;
-  }
+  .swipe-footer {margin-bottom: 10px;}
 
-  .footer-contents {
-    padding: 10px 0;
-  }
+  .footer-contents {padding: 10px 0;}
 }

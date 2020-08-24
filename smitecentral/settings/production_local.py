@@ -15,7 +15,7 @@ AWS_SECRET_ACCESS_KEY = get_credentials('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = get_credentials('AWS_STORAGE_BUCKET_NAME')
 
 AWS_DEFAULT_ACL = None
-AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+AWS_S3_CUSTOM_DOMAIN = get_credentials('CLOUDFRONT_URL')
 
 ALLOWED_HOSTS += ['localhost', '127.0.0.1']
 
@@ -25,7 +25,7 @@ DATABASES['default'] = dj_database_url.config(
     ssl_require=True
 )
 
-STATIC_URL = "https://{AWS_S3_CUSTOM_DOMAIN}/static/"
+STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/static/"
 STATICFILES_STORAGE = "smitecentral.storage.StaticStorage"
 
 

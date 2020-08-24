@@ -10,6 +10,12 @@ SECRET_KEY = get_credentials("SECRET_KEY")
 YOUTUBE_API_KEY = get_credentials("YOUTUBE_API_KEY")
 POSTGRES_PASSWORD = get_credentials("POSTGRES_PASSWORD")
 
+INSTALLED_APPS += ["debug_toolbar"]
+
+INTERNAL_IPS = ["127.0.0.1",]
+
+MIDDLEWARE += ["debug_toolbar.middleware.DebugToolbarMiddleware"]
+
 DATABASES["default"] = {
     "ENGINE": "django.db.backends.postgresql",
     "HOST": "localhost",

@@ -24,6 +24,9 @@ class League(models.Model):
         self.code = "".join(code_title)
         super().save(*args, **kwargs)
 
+    def __str__(self):
+        return self.title
+
 class Competition(models.Model):
     league = models.ForeignKey(
         League,

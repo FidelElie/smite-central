@@ -12,29 +12,28 @@ class EsportsView(View):
     def get(self, request):
         images = Image.objects.all().filter(disabled=False).order_by("id")
 
-        league_queries = [
-            Competition.objects.all().filter(league=league).order_by("-season") for league in League.objects.all().order_by("id")
-        ]
+        league_entries = list(League.objects.all().order_by("id"))
+        comp_entries = list(Competition.objects.all().order_by("-season").prefetch_related("league"))
 
-        league_information = []
+        esports_info = []
 
-        for i, query in enumerate(league_queries):
-            corresponding_comp_code = query[0].league.code
-            logo_url = "esports/images/{}-logo.png".format(
-                corresponding_comp_code.lower())
-            league_information.append(
+        for entry in league_entries:
+            league_code = entry.code.lower()
+            league_tagline = entry.tagline
+            league_logo = "esports/images/{}.png".format(league_code)
+            seasons = [e for e in comp_entries if e.league == entry]
+
+            esports_info.append(
                 {
-                    "seasons": query,
-                    "url": logo_url,
-                    "tagline": query[0].league.tagline,
-                    "corresponding_league": query[0].league
+                    "league": entry,
+                    "logo": league_logo,
+                    "seasons": seasons
                 }
             )
 
         context = {
-            "leagues": League.objects.all().order_by("id"),
             "images": images,
-            "league_info": league_information,
+            "esports_info": esports_info,
             "channel_id": settings.SMITE_VOD_ID
         }
 
@@ -63,7 +62,7 @@ class LeagueView(View):
             "competitions": competitions,
             "current_comp": current_competition,
             "page": page,
-            "logo": "esports/images/{}-logo.png".format(league.code.lower())
+            "logo": "esports/images/{}.png".format(league.code.lower())
         }
 
         return render(request, self.template_name, context)

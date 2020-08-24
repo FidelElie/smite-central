@@ -87,7 +87,7 @@ class CompetitionData(EsportsData):
 
             if not existing_comp.exists():
                 print("Adding {} {} To Competition Model".format(
-                    data["league"], data["season"]
+                    data["league"].code, data["season"]
                 ))
                 Competition(**data).save()
 

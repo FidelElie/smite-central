@@ -24,7 +24,7 @@
     <div class="league-section">
         <div class="container league-container">
             <div class="league-plate">
-                <img src="{% static logo %}">
+                <img src="{{ league.league_logo.url }}">
             </div>
             <div class="league-info">
                 <h2>{{ league.tagline }}</h2>

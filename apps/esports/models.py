@@ -17,6 +17,8 @@ class League(models.Model):
         models.CharField(max_length=100), blank=True)
     match_exclude_filters = ArrayField(
         models.CharField(max_length=100), blank=True)
+    league_logo = models.ImageField(
+        upload_to="esports/images/league", null=True)
 
     def save(self, *args, **kwargs):
         split_title = self.title.split(" ")
@@ -60,7 +62,7 @@ class Match(models.Model):
 
 class Image(models.Model):
     title = models.CharField(max_length=30)
-    image = models.ImageField(upload_to="esports/images")
+    image = models.ImageField(upload_to="esports/images/image")
     disabled = models.BooleanField(default=False)
 
     _original_image = None

@@ -18,16 +18,11 @@ class EsportsView(View):
         esports_info = []
 
         for entry in league_entries:
-            league_code = entry.code.lower()
-            league_tagline = entry.tagline
-            league_logo = "esports/images/{}.png".format(league_code)
-            seasons = [e for e in comp_entries if e.league == entry]
-
             esports_info.append(
                 {
                     "league": entry,
-                    "logo": league_logo,
-                    "seasons": seasons
+                    "logo": entry.league_logo.url,
+                    "seasons": [e for e in comp_entries if e.league == entry]
                 }
             )
 
@@ -61,8 +56,7 @@ class LeagueView(View):
             "league": league,
             "competitions": competitions,
             "current_comp": current_competition,
-            "page": page,
-            "logo": "esports/images/{}.png".format(league.code.lower())
+            "page": page
         }
 
         return render(request, self.template_name, context)

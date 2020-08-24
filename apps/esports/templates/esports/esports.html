@@ -57,7 +57,7 @@
                 <div class="league-container">
                     <div class="league-plate">
                         <a href="{% url 'league' info.league.id %}">
-                            <img src="{% static info.logo %}">
+                            <img src="{{ info.logo }}">
                         </a>
                     </div>
                     <h3 class="season-banner">{{ info.league.tagline }}</h3>

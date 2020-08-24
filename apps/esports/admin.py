@@ -9,7 +9,7 @@ class LeagueAdmin(admin.ModelAdmin, DynamicArrayMixin):
     fieldsets = (
         ("Information",
         {"fields": (
-            "title", "code", "tagline", "description")}),
+            "title", "code", "tagline", "description", "league_logo")}),
         ("Competition",
         {"fields": (
             "competition_include_filters", "competition_exclude_filters")}),
